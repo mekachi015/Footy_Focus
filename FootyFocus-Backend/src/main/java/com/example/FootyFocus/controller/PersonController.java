@@ -4,6 +4,7 @@ package com.example.FootyFocus.controller;
 import com.example.FootyFocus.entity.Person;
 import com.example.FootyFocus.service.ApiService;
 import com.example.FootyFocus.service.PersonService;
+import jakarta.persistence.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
