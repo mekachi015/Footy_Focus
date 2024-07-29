@@ -45,4 +45,29 @@ public class PersonController {
         Person person = apiService.fetchPersonFromApi(id);
         return personService.savePerson(person);
     }
+
+    @PostMapping("/save/{id}")
+    public Person savePersonById(@PathVariable Long id){
+        Person person = apiService.fetchPersonFromApi(id);
+        return personService.savePerson(person);
+    }
+//
+//    // New endpoint to search for a player by name
+//    @GetMapping("/search")
+//    public Person searchPersonByName(@RequestParam String name) {
+//        return apiService.searchPersonByName(name);
+//    }
+
+//    // New endpoint to search for a player by name and return the player's ID
+//    @GetMapping("/search")
+//    public Long searchPersonByNameReturnId(@RequestParam String name) {
+//        return apiService.searchPersonByNameReturnId(name);
+//    }
+
+//    @GetMapping("/search")
+//    public Person searchPersonByName(@RequestParam String name) {
+//        return apiService.fetchPersonByName(name);
+//    }
+
+
 }
