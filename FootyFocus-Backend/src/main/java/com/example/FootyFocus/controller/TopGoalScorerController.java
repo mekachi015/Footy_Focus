@@ -2,6 +2,7 @@ package com.example.FootyFocus.controller;
 
 import com.example.FootyFocus.entity.TopGoalScorers;
 import com.example.FootyFocus.service.TopScorersAPIService;
+import com.example.FootyFocus.service.TopScorersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,21 +22,29 @@ public class TopGoalScorerController {
 //    }
 
 
-    private TopScorersAPIService topScorersAPIService;
+    private TopScorersService topScorersService;
 
-    @Autowired
-    public void TopScorersController(TopScorersAPIService topScorersAPIService) {
-        this.topScorersAPIService = topScorersAPIService;
-    }
+//    @Autowired
+//    public void TopScorersController(TopScorersService topScorersService) {
+//        this.TopScorersController = topScorersService;
+//    }
+//
+//    @GetMapping("/{leagueCode}/scorers")
+//    public ResponseEntity<?> getTopGoalScorers(@PathVariable String leagueCode, @RequestParam int season) {
+//        try {
+//            List<TopGoalScorers> topScorers = topScorersService.fetchTopScorersFromApi(leagueCode, season);
+//            return new ResponseEntity<>(topScorers, HttpStatus.OK);
+//        } catch (Exception e) {
+//            return new ResponseEntity<>("Failed to fetch top scorers", HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
+
 
     @GetMapping("/{leagueCode}/scorers")
-    public ResponseEntity<?> getTopGoalScorers(@PathVariable String leagueCode, @RequestParam int season) {
-        try {
-            List<TopGoalScorers> topScorers = topScorersAPIService.fetchTopScorerFromApi(leagueCode, season);
-            return new ResponseEntity<>(topScorers, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>("Failed to fetch top scorers", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    public List<TopGoalScorers> getTopScorers(
+            @PathVariable String leagueCode, @RequestParam int season) {
+        return topScorersService.fetchTopScorersFromApi(leagueCode, season);
     }
+
 
 }
