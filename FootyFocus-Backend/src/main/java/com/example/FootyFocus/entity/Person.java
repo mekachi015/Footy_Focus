@@ -1,11 +1,18 @@
 package com.example.FootyFocus.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+@Data
+@Transactional
+@Setter
+@Getter
 @Entity
+
+@Table(name = "player")
 public class Person {
 
     @Id
@@ -29,75 +36,4 @@ public class Person {
     private String teamFlag; // store a link with the image of the teams flag
 
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getNationality() {
-        return nationality;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
-
-    public String getSection() {
-        return section;
-    }
-
-    public void setSection(String section) {
-        this.section = section;
-    }
-
-    public Integer getShirtNumber() {
-        return shirtNumber;
-    }
-
-    public void setShirtNumber(Integer shirtNumber) {
-        this.shirtNumber = shirtNumber;
-    }
-
-    public String getTeamName() {
-        return teamName;
-    }
-
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
-    }
-
-    public String getTeamCode() {
-        return teamCode;
-    }
-
-    public void setTeamCode(String teamCode) {
-        this.teamCode = teamCode;
-    }
-
-    public String getTeamFlag() {
-        return teamFlag;
-    }
-
-    public void setTeamFlag(String teamFlag) {
-        this.teamFlag = teamFlag;
-    }
 }

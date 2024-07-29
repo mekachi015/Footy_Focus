@@ -166,6 +166,53 @@ public class CompWinnersApiService {
 
     private static final String API_URL = "http://api.football-data.org/v4/competitions/";
 
+//    public List<CompWinners> fetchingWinnersFromApi(String leagueCode) {
+//        List<CompWinners> compWinnersList = new ArrayList<>();
+//        try {
+//            String url = API_URL + leagueCode;
+//            HttpHeaders headers = new HttpHeaders();
+//            headers.set("X-Auth-Token", apiToken);
+//            HttpEntity<String> entity = new HttpEntity<>(headers);
+//
+//            ResponseEntity<JsonNode> response = restTemplate.exchange(url, HttpMethod.GET, entity, JsonNode.class);
+//            JsonNode body = response.getBody();
+//
+//            if (body != null) {
+//                System.out.println("API Response: " + body.toString());
+//                JsonNode seasons = body.get("seasons");
+//                if (seasons != null) {
+//                    for (JsonNode season : seasons) {
+//                        JsonNode winner = season.get("winner");
+//                        if (winner != null) {
+//                            CompWinners compWinners = new CompWinners();
+//                            compWinners.setLeagueCode(leagueCode);
+//                            compWinners.setStartDate(season.has("startDate") ? season.get("startDate").asText() : null);
+//                            compWinners.setEndDate(season.has("endDate") ? season.get("endDate").asText() : null);
+//                            compWinners.setWinnerName(winner.has("name") ? winner.get("name").asText() : null);
+//                            compWinners.setwShortName(winner.has("tla") ? winner.get("tla").asText() : null);
+//                            compWinners.setWinnersCrest(winner.has("crest") ? winner.get("crest").asText() : null);
+//                            compWinners.setWinnerVenue(winner.has("venue") ? winner.get("venue").asText() : null);
+//
+//                            compWinnersRepo.save(compWinners);
+//                            compWinnersList.add(compWinners);
+//                        }
+//                    }
+//                } else {
+//                    System.out.println("No seasons data found in the response.");
+//                }
+//            } else {
+//                System.out.println("Response body is null.");
+//            }
+//        } catch (RestClientException e) {
+//            System.err.println("API request error: " + e.getMessage());
+//            e.printStackTrace();
+//        } catch (Exception e) {
+//            System.err.println("Unexpected error: " + e.getMessage());
+//            e.printStackTrace();
+//        }
+//        return compWinnersList;
+//    }
+
     public List<CompWinners> fetchingWinnersFromApi(String leagueCode) {
         List<CompWinners> compWinnersList = new ArrayList<>();
         try {
@@ -173,12 +220,10 @@ public class CompWinnersApiService {
             HttpHeaders headers = new HttpHeaders();
             headers.set("X-Auth-Token", apiToken);
             HttpEntity<String> entity = new HttpEntity<>(headers);
-
+            // ... API call and response handling
             ResponseEntity<JsonNode> response = restTemplate.exchange(url, HttpMethod.GET, entity, JsonNode.class);
-            JsonNode body = response.getBody();
-
+           JsonNode body = response.getBody();
             if (body != null) {
-                System.out.println("API Response: " + body.toString());
                 JsonNode seasons = body.get("seasons");
                 if (seasons != null) {
                     for (JsonNode season : seasons) {
@@ -186,12 +231,12 @@ public class CompWinnersApiService {
                         if (winner != null) {
                             CompWinners compWinners = new CompWinners();
                             compWinners.setLeagueCode(leagueCode);
-                            compWinners.setStartDate(season.has("startDate") ? season.get("startDate").asText() : null);
-                            compWinners.setEndDate(season.has("endDate") ? season.get("endDate").asText() : null);
-                            compWinners.setWinnerName(winner.has("name") ? winner.get("name").asText() : null);
-                            compWinners.setwShortName(winner.has("tla") ? winner.get("tla").asText() : null);
-                            compWinners.setWinnersCrest(winner.has("crest") ? winner.get("crest").asText() : null);
-                            compWinners.setWinnerVenue(winner.has("venue") ? winner.get("venue").asText() : null);
+                            compWinners.setStartDate(season.get("startDate").asText());
+                            compWinners.setEndDate(season.get("endDate").asText());
+                            compWinners.setWinnerName(winner.get("name").asText());
+                            compWinners.setShortName(winner.get("shortName").asText());
+                            compWinners.setWinnersCrest(winner.get("crest").asText());
+                            compWinners.setWinnerVenue(winner.get("venue").asText());
 
                             compWinnersRepo.save(compWinners);
                             compWinnersList.add(compWinners);
@@ -210,18 +255,10 @@ public class CompWinnersApiService {
             System.err.println("Unexpected error: " + e.getMessage());
             e.printStackTrace();
         }
-        return compWinnersList;
+        return
+        compWinnersList;
     }
-
-    public class LeagueCodeValidator {
-
-        private static final Set<String> VALID_LEAGUE_CODES = Set.of("PL","SA","DED", "BL1", "FL1", "PD", "CL","EC");
-
-        public static void validate(String leagueCode) throws InvalidLeagueCodeException {
-            if (!VALID_LEAGUE_CODES.contains(leagueCode.toUpperCase())){
-                throw new InvalidLeagueCodeException("Invalid leage code:" + leagueCode);
-            }
-        }
-    }
-
 }
+
+
+
