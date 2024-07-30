@@ -1,0 +1,30 @@
+<div class="container">
+
+    <!-- <span *ngIf="seasonYear!=null">
+         <img [src]="competitionEmblem" alt="">
+    </span> -->
+
+    <div class="competition" *ngFor="let item of leagueStandings">
+
+        <div class="team-info">
+
+            <img [src]="item.teamCrest" [alt]="item.teamName" class="teamCrest">
+            <span class>{{item.position}}</span>
+
+            <span> {{item.teamName}}</span>
+
+            <span> {{item.teamShortName}}</span>
+
+            <span> {{item.teamForm}}</span>
+
+            <span> matches played: {{item.matchesPlayed}}</span>
+
+            <span> won: {{item.gamesWon}} </span>
+
+            <span> lost: {{item.gamesWon}} </span>
+
+            <span> points: {{item.noOfPoints}}</span>
+
+        </div>
+    </div>
+</div>

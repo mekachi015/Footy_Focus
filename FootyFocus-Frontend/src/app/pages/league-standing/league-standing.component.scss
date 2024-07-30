@@ -1,0 +1,26 @@
+.competition {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    margin: 10px 0; /* Space between teams */
+}
+
+.team-info {
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: space-between; /* Space items evenly */
+    border: 1px solid #ccc; /* Add border */
+    padding: 10px; /* Space inside */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #f9f9f9; /* Background color */
+}
+
+.teamCrest {
+    width: 60px; /* Set crest width */
+    height: 20pxx; /* Set crest height */
+    margin-right: 10px; /* Space between image and text */
+}
+
+.span {
+    flex: 1; /* Make spans take equal space */
+    text-align: center; /* Center align text */
+}
