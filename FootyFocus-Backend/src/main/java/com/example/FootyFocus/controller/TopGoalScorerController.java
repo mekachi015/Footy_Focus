@@ -2,10 +2,6 @@ package com.example.FootyFocus.controller;
 
 import com.example.FootyFocus.entity.TopGoalScorers;
 import com.example.FootyFocus.service.TopScorersAPIService;
-import com.example.FootyFocus.service.TopScorersService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -22,7 +18,7 @@ public class TopGoalScorerController {
 //    }
 
 
-    private TopScorersService topScorersService;
+    private TopScorersAPIService topScorersService;
 
 //    @Autowired
 //    public void TopScorersController(TopScorersService topScorersService) {

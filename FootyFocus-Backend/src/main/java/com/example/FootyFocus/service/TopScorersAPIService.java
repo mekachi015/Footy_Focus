@@ -6,8 +6,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -102,7 +100,7 @@ import java.util.Map;
 //}
 
 @Service
-public class TopScorersService {
+public class TopScorersAPIService {
 
     private static final String API_URL = "http://api.football-data.org/v4/competitions/{leagueCode}/scorers?season={seasonYear}";
     private static final String API_TOKEN = "5576d3daf0c143b79ccbb7c9a1b22607";
