@@ -24,12 +24,18 @@ public class detailedPlayerController {
     public detailedPlayer getPlayerDetails(@PathVariable Long id) {
         return playerAPIService.fetchPlayerInfoFromAPI(id);
     }
-}
+
 
 //    @GetMapping("/search")
 //    public detailedPlayer searchPlayerByName(@RequestParam String name) {
-//       Long playerID = playerAPIService.searchPlayerIdByName(name);
 //
-//       return playerAPIService.fetchPlayerInfoFromAPI(playerID);
+//       return playerAPIService.fetchPlayerInfoFromAPI();
 //    }
-//}
+
+    @GetMapping("/search")
+    public detailedPlayer searchPlayerByName(@RequestParam String name) {
+        Long playerID = playerAPIService.searchPlayerByName(name);
+        return playerAPIService.fetchPlayerInfoFromAPI(playerID);
+    }
+
+}

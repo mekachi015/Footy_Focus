@@ -55,18 +55,18 @@ public class detailedPlayerAPIService {
             }
         }
 
-        // Contract information
-//        Map<String, Object> contract = (Map<String, Object>) body.get("contract");
-//        if (contract != null) {
-//            playerInfo.setContractStartDate((String) contract.get("startDate"));
-//            playerInfo.setContractEndDate((String) contract.get("endDate"));
-//        }
+         //Contract information
+        Map<String, Object> contract = (Map<String, Object>) body.get("contract");
+        if (contract != null) {
+            playerInfo.setContractStartDate((String) contract.get("startDate"));
+            playerInfo.setContractEndDate((String) contract.get("endDate"));
+        }
 
         return playerInfo;
 
     }
 
-    public detailedPlayer searchPlayerByName(String name){
+    public Long searchPlayerByName(String name){
 
         RestTemplate restTemplate = new RestTemplate();
 
@@ -85,7 +85,8 @@ public class detailedPlayerAPIService {
 
         Map<String ,Object> playerData = (Map<String, Object>) ((Map<String, Object>) body.get("players")).get(0);
 
-        return  mapToDetailedPlayer(playerData);
+        return (Long) playerData.get("id");
+//        return  mapToDetailedPlayer(playerData);
     }
 
     private detailedPlayer mapToDetailedPlayer(Map<String, Object> body){
