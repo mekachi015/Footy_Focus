@@ -1,16 +1,52 @@
-<div class="grid-container">
-    <div *ngFor="let item of players" class="player-card">
-
-      <input type="text" value="">
-      <h3>{{ item.name }}</h3>
-      <p>Date of Birth: {{ item.dateOfBirth }}</p>
-      <p>Nationality: {{ item.nationality }}</p>
-      <p>Section: {{ item.section }}</p>
-      <p>Shirt Number: {{ item.shirtNumber }}</p>
-
-    </div>
+<!-- top-players.component.html -->
+<!-- <div *ngIf="players.length > 0">
+  <h2>Top Players</h2>
+  <ul>
+    <li *ngFor="let player of players">
+      <h3>{{ player.playerName }} ({{ player.teamName }})</h3>
+      <img [src]="player.teamCrest" alt="{{ player.teamName }} Crest" width="50" />
+      <p>Goals Scored: {{ player.goalsScored }}</p>
+      <p>Assists: {{ player.noOfAssits }}</p>
+    </li>
+  </ul>
 </div>
+<div *ngIf="players.length === 0">
+  <p>No players found.</p>
+</div> -->
 
-  <ng-template #noPlayers>
+
+<!-- top-players.component.html -->
+<div class="card-container">
+    <div>
+        <label for="leagueCode">Select League:</label>
+        <select id="leagueCode" [(ngModel)]="selectedLeagueCode">
+            <option *ngFor="let item of leagueCodes " [value]="item.code">
+                {{item.name}}
+            </option>
+        </select>
+    </div>
+  
+    <div>
+        <label for="seasonYear">Enter Season Year:</label>
+        <input id="seasonYear" type="number" [(ngModel)]="selectedSeasonYear">
+        </div>
+
+        <button (click)="fetchTopPlayers()">Fetch Top 10</button>
+    </div>
+
+  <div *ngIf="players.length > 0">
+    <h2>Top Players For: {{selectedSeasonYear}}</h2>
+    <div class="card-grid">
+      <div class="card" *ngFor="let player of players">
+        <img class="team-crest" [src]="player.teamCrest" alt="{{ player.teamName }} Crest" />
+        <h3>{{ player.playerName }}</h3>
+        <p class="team-name">{{ player.teamName }}</p>
+        <p>Goals Scored: <strong>{{ player.goalsScored }}</strong></p>
+        <p>Assists: <strong>{{ player.noOfAssits }}</strong></p>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="players.length === 0">
     <p>No players found.</p>
-  </ng-template>
+  </div>
+

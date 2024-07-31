@@ -8,23 +8,19 @@ import { Player } from 'src/app/models/Player';
 })
 export class PlayerServiceService {
 
-  private apiUrl = 'http://localhost:8080/v4/persons'; // a link to the persons endpoint
+  private apiUrl = 'http://localhost:8080/v4/competitions';
 
   constructor(private http: HttpClient) { }
 
-  getPlayers(): Observable<Player[]>{
-    return this.http.get<Player[]>(this.apiUrl);
-  }
+  getTopTenPlayers(leagueCode: string, seasonYear: number) : Observable<any>{
 
-  getPlayerById(playerId: number): Observable<any>{
-    const url = `${this.apiUrl}/${playerId}`
+    const url = `${this.apiUrl}/${leagueCode}/scorers?season=${seasonYear}`;
     const headers = new HttpHeaders({
-      'x-auth-token' : '5576d3daf0c143b79ccbb7c9a1b22607',
-      'Content-Type': 'application/json'
+      'x-auth-token': '5576d3daf0c143b79ccbb7c9a1b22607',
+      'Content-Type': 'application/json' 
     });
 
-    return this.http.get<Player>(url, {headers});
+      return this.http.get<Player>(url, {headers});
   }
-
   
 }
