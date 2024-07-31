@@ -1,4 +1,4 @@
-package com.example.FootyFocus.service;
+package com.example.FootyFocus.service.APIServices;
 
 import com.example.FootyFocus.entity.Person;
 import org.springframework.http.HttpEntity;
@@ -55,66 +55,6 @@ public class ApiService {
         return person;
     }
 
-//    public Person searchPersonByName(String name) {
-//        RestTemplate restTemplate = new RestTemplate();
-//
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.set("X-Auth-Token", API_TOKEN);
-//
-//        HttpEntity<String> entity = new HttpEntity<>(headers);
-//
-//        // Build the search URL with the player's name as a query parameter
-//        String url = SEARCH_API_URL + "?name=" + name;
-//
-//        ResponseEntity<Map[]> response = restTemplate.exchange(url, HttpMethod.GET, entity, Map[].class);
-//        Map[] body = response.getBody();
-//
-//        if (body == null || body.length == 0) {
-//            throw new RuntimeException("No player found with the given name");
-//        }
-//
-//        Map<String, Object> playerData = body[0]; // Assume we take the first result for simplicity
-//
-//        Person person = new Person();
-//        person.setName((String) playerData.get("name"));
-//        person.setDateOfBirth((String) playerData.get("dateOfBirth"));
-//        person.setNationality((String) playerData.get("nationality"));
-//        person.setSection((String) playerData.get("section"));
-//        person.setShirtNumber((Integer) playerData.get("shirtNumber"));
-//
-//        Map<String, Object> currentTeam = (Map<String, Object>) playerData.get("currentTeam");
-//        if (currentTeam != null) {
-//            person.setTeamName((String) currentTeam.get("name"));
-//            person.setTeamCode((String) currentTeam.get("code"));
-//            person.setTeamFlag((String) currentTeam.get("flag"));
-//        }
-//
-//        return person;
-//    }
-
-//    //Searches by name and returns a id
-//    public Long searchPersonByNameReturnId(String name) {
-//        RestTemplate restTemplate = new RestTemplate();
-//
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.set("X-Auth-Token", API_TOKEN);
-//
-//        HttpEntity<String> entity = new HttpEntity<>(headers);
-//
-//        // Build the search URL with the player's name as a query parameter
-//        String url = SEARCH_API_URL + "?name=" + name;
-//
-//        ResponseEntity<Map[]> response = restTemplate.exchange(url, HttpMethod.GET, entity, Map[].class);
-//        Map[] body = response.getBody();
-//
-//        if (body == null || body.length == 0) {
-//            throw new RuntimeException("No player found with the given name");
-//        }
-//
-//        Map<String, Object> playerData = body[0]; // Assume we take the first result for simplicity
-//
-//        return ((Number) playerData.get("id")).longValue();
-//    }
 
     public Long searchPersonByName(String name) {
         RestTemplate restTemplate = new RestTemplate();

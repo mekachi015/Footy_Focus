@@ -1,0 +1,48 @@
+<div class="container">
+
+    <!-- <span *ngIf="seasonYear!=null">
+         <img [src]="competitionEmblem" alt="">
+    </span> -->
+    <div class="input-field-container">
+    <div>
+        <label for="leagueCode">Select League:</label>
+        <select id="leagueCode" [(ngModel)]="selectedLeagueCode">
+            <option *ngFor="let league of leagueCodes" [value]="league.code">
+                {{ league.name }}
+            </option>
+        </select>
+    </div>
+  
+    <div>
+        <label for="seasonYear">Enter Season Year:</label>
+        <input id="seasonYear" type="number" [(ngModel)]="selectedSeasonYear">
+        </div>
+
+        <button (click)="fetchStandings()">Fetch Standings</button>
+    </div>
+  
+  
+
+    <div class="competition" *ngFor="let item of leagueStandings">
+
+        <div class="team-info">
+
+            <img [src]="item.teamCrest" [alt]="item.teamName" class="teamCrest">
+            <span class>{{item.position}}</span>
+
+            <span> {{item.teamName}}</span>
+
+            <span> {{item.teamShortName}}</span>
+
+            <span> {{item.teamForm}}</span>
+
+            <span> matches played: {{item.matchesPlayed}}</span>
+
+            <span> won: {{item.gamesWon}} </span>
+
+            <span> lost: {{item.gamesLost}} </span>
+
+            <span> points: {{item.noOfPoints}}</span>
+
+        </div>
+    </div>

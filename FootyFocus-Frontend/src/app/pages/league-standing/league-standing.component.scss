@@ -1,0 +1,60 @@
+.competition {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    margin: 10px 0; /* Space between teams */
+}
+
+.team-info {
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: space-between; /* Space items evenly */
+    border: 1px solid #ccc; /* Add border */
+    padding: 10px; /* Space inside */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #f9f9f9; /* Background color */
+}
+
+.teamCrest {
+    width: 60px; /* Set crest width */
+    height: 20pxx; /* Set crest height */
+    margin-right: 10px; /* Space between image and text */
+}
+
+.span {
+    flex: 1; /* Make spans take equal space */
+    text-align: center; /* Center align text */
+}
+
+label {
+    font-weight: bold;
+    margin-right: 1rem;
+  }
+  
+  .input-field-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  select, input {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
