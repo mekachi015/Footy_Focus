@@ -33,7 +33,7 @@ public class detailedPlayerAPIService {
         }
 
         detailedPlayer playerInfo = new detailedPlayer();
-//        playerInfo.setId((Long) body.get("id"));id
+        playerInfo.setId(id);
         playerInfo.setName((String) body.get("name"));
         playerInfo.setDateOfBirth((String) body.get("dateOfBirth"));
         playerInfo.setNationality((String) body.get("nationality"));
