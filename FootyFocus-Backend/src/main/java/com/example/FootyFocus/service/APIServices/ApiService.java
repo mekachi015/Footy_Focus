@@ -1,4 +1,4 @@
-package com.example.FootyFocus.service;
+package com.example.FootyFocus.service.APIServices;
 
 import com.example.FootyFocus.entity.Person;
 import org.springframework.http.HttpEntity;

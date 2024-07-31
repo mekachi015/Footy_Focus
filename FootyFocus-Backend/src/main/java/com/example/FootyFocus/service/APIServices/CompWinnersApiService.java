@@ -131,10 +131,9 @@
 //    }
 //}
 
-package com.example.FootyFocus.service;
+package com.example.FootyFocus.service.APIServices;
 
 import com.example.FootyFocus.entity.CompWinners;
-import com.example.FootyFocus.exception.InvalidLeagueCodeException;
 import com.example.FootyFocus.repository.CompWinnersRepo;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.beans.factory.annotation.Value;
@@ -148,7 +147,6 @@ import org.springframework.web.client.RestClientException;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class CompWinnersApiService {

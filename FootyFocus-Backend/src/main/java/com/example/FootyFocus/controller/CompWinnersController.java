@@ -2,7 +2,7 @@ package com.example.FootyFocus.controller;
 
 import com.example.FootyFocus.entity.CompWinners;
 import com.example.FootyFocus.exception.InvalidLeagueCodeException;
-import com.example.FootyFocus.service.CompWinnersApiService;
+import com.example.FootyFocus.service.APIServices.CompWinnersApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
