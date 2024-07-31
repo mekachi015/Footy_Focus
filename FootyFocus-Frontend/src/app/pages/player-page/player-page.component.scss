@@ -5,6 +5,12 @@
   margin: auto;
 }
 
+.input-container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));

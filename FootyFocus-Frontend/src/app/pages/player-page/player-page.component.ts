@@ -37,6 +37,8 @@ export class PlayerPageComponent implements OnInit{
     this.playerService.getTopTenPlayers(this.selectedLeagueCode, this.selectedSeasonYear)
     .subscribe((data: Player[]) =>{
       this.players = data;
+
+      console.log(this.players);
     },
 
     (error) => {
