@@ -6,10 +6,5 @@ export interface Player{
     section: string;
     shirtNumber: number;
 
-   currentTeam:{ 
-    flag: string;
-    code: string;
-    name: string;
-   }
 }
     

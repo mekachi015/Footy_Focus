@@ -13,10 +13,22 @@ export class PlayerPageComponent implements OnInit{
 
   constructor (private playerService: PlayerServiceService){}
 
+  idPlayer : number = 44;
   ngOnInit(): void {
       this.playerService.getPlayers().subscribe((player: Player[]) => {
         this.players = player;
       })
   }
 
+  getPlayerById(): void{
+    this.playerService.getPlayerById(this.idPlayer).subscribe(
+      (data: Player[]) => {
+        this.players = data;
+      },
+
+      (error) => {
+        console.error('Error fetching players');
+      }
+    )
+  }
 }

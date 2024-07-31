@@ -15,12 +15,20 @@ export class LeagueStandingComponent implements OnInit {
 
   constructor(private leagueService: LeagueStandingsService) {}
 
-  leagueCodes: string[] = ['PL', 'SA', 'BL1', 'EC', 'CL', 'FL1', 'PD', 'DED'];
+  leagueCodes: { code: string, name: string }[] = [
+    { code: 'PL', name: 'Premier League' },
+    { code: 'BL1', name: 'Bundesliga' },
+    { code: 'SA', name: 'Serie A' },
+    { code: 'FL1', name: 'Ligue 1' },
+    { code: 'PD', name: 'La Liga' },
+    { code: 'DED', name: 'Eredivisie' }
+  ];
+  
   seasonYear: number[] = [2020, 2021, 2022, 2023];
 
   // selectedSeasonYear: number = new Date().getFullYear(); //default to the current year
   selectedSeasonYear: number = 2023; //default to the current year
-  selectedLeagueCode: string = 'DED';  // setting default to premier league
+  selectedLeagueCode: string = 'PL';  // setting default to premier league
 
 
   ngOnInit(): void {

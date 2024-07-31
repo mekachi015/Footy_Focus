@@ -1,14 +1,13 @@
 <div class="grid-container">
     <div *ngFor="let item of players" class="player-card">
+
+      <input type="text" value="">
       <h3>{{ item.name }}</h3>
       <p>Date of Birth: {{ item.dateOfBirth }}</p>
       <p>Nationality: {{ item.nationality }}</p>
       <p>Section: {{ item.section }}</p>
       <p>Shirt Number: {{ item.shirtNumber }}</p>
 
-      <p>Team Name: {{ item.currentTeam.name }}</p>
-      <p>Team Code: {{ item.currentTeam.code }}</p>
-      <img [src]="item.currentTeam.flag" alt="{{ item.currentTeam.flag }} flag">
     </div>
 </div>
 
