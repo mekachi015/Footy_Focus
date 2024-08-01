@@ -1,0 +1,35 @@
+<div class="auth-container">
+    <div class="form-container">
+        <form *ngIf="isRegistering" (ngSubmit)="registerUser()">
+            <h2>Register</h2>
+            <div class="form-group">
+                <label for="registerUsername">Username:</label>
+                <input id="registerUsername" type="text" [(ngModel)]="registerForm.username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="registerEmail">Email:</label>
+                <input id="registerEmail" type="email" [(ngModel)]="registerForm.email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="registerPassword">Password:</label>
+                <input id="registerPassword" type="password" [(ngModel)]="registerForm.password" name="password" required>
+            </div>
+            <button type="submit">Register</button>
+            <button type="button" (click)="toggleForm()">Switch to Login</button>
+        </form>
+
+        <form *ngIf="!isRegistering" (ngSubmit)="loginUser()">
+            <h2>Login</h2>
+            <div class="form-group">
+                <label for="loginUsername">Username:</label>
+                <input id="loginUsername" type="text" [(ngModel)]="loginForm.username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password:</label>
+                <input id="loginPassword" type="password" [(ngModel)]="loginForm.password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+            <button type="button" (click)="toggleForm()">Switch to Register</button>
+        </form>
+    </div>
+</div>

@@ -7,12 +7,14 @@ import { PlayerPageComponent } from './pages/player-page/player-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LeagueStandingComponent } from './pages/league-standing/league-standing.component';
 import { FormsModule } from '@angular/forms';
+import { LoginRegisterComponent } from './pages/login-register/login-register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlayerPageComponent,
-    LeagueStandingComponent
+    LeagueStandingComponent,
+    LoginRegisterComponent
   ],
   imports: [
     BrowserModule,
