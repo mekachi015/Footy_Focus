@@ -43,7 +43,7 @@ public class ApiService {
         person.setDateOfBirth((String) body.get("dateOfBirth"));
         person.setNationality((String) body.get("nationality"));
         person.setSection((String) body.get("section"));
-        person.setShirtNumber((Integer) body.get("shirtNumber"));
+        person.setShirtNumber(person.getShirtNumber());
 
         Map<String, Object> currentTeam = (Map<String, Object>) body.get("currentTeam");
         if (currentTeam != null) {
