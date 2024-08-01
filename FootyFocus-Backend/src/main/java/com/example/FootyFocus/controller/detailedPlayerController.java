@@ -12,6 +12,8 @@ public class detailedPlayerController {
 
     @Autowired
     private detailedPlayerAPIService playerAPIService;
+
+
 //
 //    @GetMapping("/{id}")
 //    public detailedPlayer getPlayerDetails(@PathVariable Long id) {
@@ -20,11 +22,16 @@ public class detailedPlayerController {
 
 
 
-    @GetMapping("/{id}")
-    public detailedPlayer getPlayerDetails(@PathVariable Long id) {
-        return playerAPIService.fetchPlayerInfoFromAPI(id);
-    }
+//    @GetMapping("/{id}")
+//    public detailedPlayer getPlayerDetails(@PathVariable Long id) {
+//        return playerAPIService.fetchPlayerInfoFromAPI(id);
+//    }
 
+    @GetMapping("/{id}")
+    public detailedPlayer fetchDetailedPlayerInfo(@PathVariable Long id)
+    {
+        return playerAPIService.fetchDetailedPlayerInfo(id);
+    }
 
 //    @GetMapping("/search")
 //    public detailedPlayer searchPlayerByName(@RequestParam String name) {
@@ -32,10 +39,10 @@ public class detailedPlayerController {
 //       return playerAPIService.fetchPlayerInfoFromAPI();
 //    }
 
-    @GetMapping("/search")
-    public detailedPlayer searchPlayerByName(@RequestParam String name) {
-        Long playerID = playerAPIService.searchPlayerByName(name);
-        return playerAPIService.fetchPlayerInfoFromAPI(playerID);
-    }
+//    @GetMapping("/search")
+//    public detailedPlayer searchPlayerByName(@RequestParam String name) {
+//        Long playerID = playerAPIService.searchPlayerByName(name);
+//        return playerAPIService.fetchPlayerInfoFromAPI(playerID);
+//    }
 
 }

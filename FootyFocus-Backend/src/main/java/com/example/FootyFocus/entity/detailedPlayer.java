@@ -8,6 +8,8 @@ import jakarta.transaction.Transactional;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
+
 
 @Transactional
 @Setter
@@ -19,29 +21,24 @@ public class detailedPlayer { // a method for the detailed player information pa
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name; //players full name
+    private String playerName;
 
     private String dateOfBirth;
 
-    private String section; // the position in which the player plays
-
     private String nationality;
+
+    private String section;
 
     private int shirtNumber;
 
     //from current team
-
-    //current team: areas
-    private String areaName; // where the
-    private String countryflag;  // the flag is for the country that the league is in
-
-    //from current team
     private String teamName;
-    private String teamCrest; //the logo for the team
-    private String teamVenue; // the teams home stadium
+    private String teamCrest;
+    private String teamVenue;
 
-    //from contract
-    private String contractStartDate;
-    private String contractEndDate;
+
+
+
+
 
 }
