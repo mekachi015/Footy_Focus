@@ -15,7 +15,7 @@
 </div> -->
 
 
-<!-- top-players.component.html -->
+<!-- top-players.component.html
 <div class="card-container">
     <div class="input-container">
       <div>
@@ -44,10 +44,50 @@
         <p class="team-name">{{ player.teamName }}</p>
         <p>Goals Scored: <strong>{{ player.goalsScored }}</strong></p>
         <p>Assists: <strong>{{ player.noOfAssits }}</strong></p>
+
+        <button (click)="goToPlayerDetail(idPlayer)">details</button>
       </div>
     </div>
   </div>
   <div *ngIf="players.length === 0">
     <p>No players found.</p>
-  </div>
+  </div> -->
 
+  <div class="card-container">
+    <div class="input-container">
+      <div>
+        <label for="leagueCode">Select League:</label>
+        <select id="leagueCode" [(ngModel)]="selectedLeagueCode">
+          <option *ngFor="let item of leagueCodes" [value]="item.code">
+            {{ item.name }}
+          </option>
+        </select>
+      </div>
+  
+      <div>
+        <label for="seasonYear">Enter Season Year:</label>
+        <input id="seasonYear" type="number" [(ngModel)]="selectedSeasonYear">
+      </div>
+  
+      <button (click)="fetchTopPlayers()">Fetch Top 10</button>
+    </div>
+  
+    <div *ngIf="players.length > 0">
+      <h2>Top Players For: {{ selectedSeasonYear }}</h2>
+      <div class="card-grid">
+        <div class="card" *ngFor="let player of players" [routerLink]="['/players', player.id]">
+          <img class="team-crest" [src]="player.teamCrest" alt="{{ player.teamName }} Crest" />
+          <h3>{{ player.playerName }}</h3>
+          <p class="team-name">{{ player.teamName }}</p>
+          <p>Goals Scored: <strong>{{ player.goalsScored }}</strong></p>
+          <p>Assists: <strong>{{ player.noOfAssits }}</strong></p>
+          <button (click)="goToPlayerDetail(player.id)"> View Player</button>
+        </div>
+      </div>
+      
+    </div>
+    <div *ngIf="players.length === 0">
+      <p>No players found.</p>
+    </div>
+  </div>
+  

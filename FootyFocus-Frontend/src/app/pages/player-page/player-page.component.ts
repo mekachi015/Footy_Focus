@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Player } from 'src/app/models/Player';
+import { Router } from '@angular/router';
 import { PlayerServiceService } from 'src/app/services/player service/player-service.service';
 
 @Component({
@@ -11,9 +12,10 @@ export class PlayerPageComponent implements OnInit{
 
   players: Player[] = [];
 
-  constructor (private playerService: PlayerServiceService){}
+  constructor (private playerService: PlayerServiceService, private router: Router){}
 
-  idPlayer : number = 44;
+  //idPlayer: number;
+  
   leagueCodes: { code: string, name: string }[] = [
     { code: 'PL', name: 'Premier League' },
     { code: 'BL1', name: 'Bundesliga' },
@@ -31,6 +33,7 @@ export class PlayerPageComponent implements OnInit{
 
   ngOnInit(): void {
      this.fetchTopPlayers();
+     
   }
 
   fetchTopPlayers(): void{
@@ -46,6 +49,9 @@ export class PlayerPageComponent implements OnInit{
     })
   }
 
+  goToPlayerDetail(id: number): void {
+    this.router.navigate(['/players', id]);
+  }
   // getPlayerById(): void{
   //   this.playerService.getPlayerById(this.idPlayer).subscribe(
   //     (data: Player[]) => {
