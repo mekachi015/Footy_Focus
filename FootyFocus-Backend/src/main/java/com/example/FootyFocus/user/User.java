@@ -12,13 +12,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "_user")
-public class User implements UserDetails {
+public class User  implements UserDetails {
 
     @Id
     @GeneratedValue
@@ -31,8 +32,13 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        return List.of(new SimpleGrantedAuthority(role.name()));
+//    }
+
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+    public Collection<? extends  GrantedAuthority> getAuthorities(){
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
 

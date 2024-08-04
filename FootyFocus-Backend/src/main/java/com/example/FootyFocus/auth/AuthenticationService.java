@@ -4,20 +4,19 @@ import com.example.FootyFocus.config.JwtService;
 import com.example.FootyFocus.repository.UserRepo;
 import com.example.FootyFocus.user.Role;
 import com.example.FootyFocus.user.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
+@Service
+@RequiredArgsConstructor
 public class AuthenticationService {
 
-    @Autowired
-    public AuthenticationController(AuthenticationService service) {
-        this.service = service;
-    }
     private final UserRepo repository;
     private final PasswordEncoder passwordEncoder;
-    private final JwtService jwtService;
+    private JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
     public AuthenticationResponse register(RegisterRequest request) {

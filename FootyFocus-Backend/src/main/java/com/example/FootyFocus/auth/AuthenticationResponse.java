@@ -1,5 +1,6 @@
 package com.example.FootyFocus.auth;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,3 +14,4 @@ public class AuthenticationResponse {
 
     private String token;
 }
+
