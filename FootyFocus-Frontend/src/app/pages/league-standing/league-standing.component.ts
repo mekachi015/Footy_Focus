@@ -47,4 +47,20 @@ export class LeagueStandingComponent implements OnInit {
       }
     )
   }
+
+  getLimitedStandings(): any[] {
+    return this.leagueStandings.slice(0, 20); // Limit to the first 20 teams
+  }
+
+  filterDuplicates(standings: LeagueStandings[]): LeagueStandings[] {
+    const uniqueTeams = new Map<string, LeagueStandings>();
+    standings.forEach(item => {
+      if (!uniqueTeams.has(item.teamName)) {
+        uniqueTeams.set(item.teamName, item);
+      }
+    });
+    return Array.from(uniqueTeams.values()).slice(0, 20); // Limit to the first 20 unique teams
+  }
+
+  
 }

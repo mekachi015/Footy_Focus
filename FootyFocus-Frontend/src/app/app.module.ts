@@ -11,6 +11,7 @@ import { LoginRegisterComponent } from './pages/login-register/login-register.co
 import { ReactiveFormsModule } from '@angular/forms';
 import { AlertModalComponent } from './models/alert-modal/alert-modal.component';
 import { PlayerWatchlistComponent } from './pages/player-watchlist/player-watchlist.component';
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,

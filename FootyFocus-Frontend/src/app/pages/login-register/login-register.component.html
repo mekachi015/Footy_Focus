@@ -1,104 +1,76 @@
-<!-- <div class="login-form-container">
-     -->
-    <!-- <img src="assets\Persistence.jpg" alt="" width="70px" height="70px">
-     -->
-<!-- 
-    <form action="">
+<div class="login-container">
+  <a routerLink="/home">
+    <img src="assets/logo.jpeg.png" alt="Logo">
+  </a>
 
-        <label for="firstName"> First Name:</label>
-        <input type="text" id="firstName" placeholder="first-name">
-        <br>
+  <app-alert-modal [success]="successMessage" *ngIf="successMessage" (close)="successMessage = null"></app-alert-modal>
 
-        <label for="lastName"> Last Name:</label>
-        <input type="text" id="firstName" placeholder="first-name">
-        <br>
+  <!-- Login Form -->
+  <form *ngIf="isLoginForm" class="form-container" [formGroup]="login" (ngSubmit)="signInForm()">
+    <h2>Welcome Back!</h2>
+    <h6>To login, please enter your details.</h6>
 
-        <label for="userName">User Name</label>
-        <input type="text" id="firstName" placeholder="username">
-        <br>
-
-        <label for="passworf">Password</label>
-        <input type="text" id="firstName" placeholder="password">
-        <br>
-
-        <button>Register</button>
-    </form>
-</div> -->
-
-<!-- <div class="login-container">
-    <a routerLink="/home">
-        <img src="assets/logo.jpeg.png" alt="Logo">
-    </a>
-  
-    <app-alert-modal [success]="successMessage" *ngIf="successMessage" (close)="successMessage = null"></app-alert-modal>
-  
-    <form class="form-container" [formGroup]="login" (ngSubmit)="signInForm()">
-        <h2>Welcome Back!</h2>
-        <h6>To login, please enter your details.</h6>
-  
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" formControlName="email" class="form-control" id="email" placeholder="e.g Lisa@gmail.com" aria-label="Email Address">
-            <div *ngIf="login.get('email')?.invalid && (login.get('email')?.dirty || login.get('email')?.touched)" class="text-danger">
-                <p *ngIf="login.get('email')?.errors?.['required']">Email is required.</p>
-                <p *ngIf="login.get('email')?.errors?.['email']">Invalid email format.</p>
-            </div>
-        </div>
-  
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" formControlName="password" class="form-control" id="password" placeholder="*******" aria-label="Password">
-            <p>Forgot password? <a [routerLink]="['/reset-password']">Reset here</a></p>
-            <div *ngIf="login.get('password')?.invalid && (login.get('password')?.dirty || login.get('password')?.touched)" class="text-danger">
-                <p *ngIf="login.get('password')?.errors?.['required']">Password is required.</p>
-            </div>
-        </div>
-  
-        <button type="submit" [disabled]="login.invalid">Login</button>
-        <br>
-        <br>
-        <p *ngIf="error" class="text-danger">{{ error }}</p>
-        
-        <p>Don't have an account? <a routerLink="/register">Register</a></p>
-    </form>
-  </div>
-   -->
-
-   <div class="login-container">
-    <a routerLink="/home">
-      <img src="assets/logo.jpeg.png" alt="Logo">
-    </a>
-  
-    <app-alert-modal [success]="successMessage" *ngIf="successMessage" (close)="successMessage = null"></app-alert-modal>
-  
-    <form class="form-container" [formGroup]="login" (ngSubmit)="signInForm()">
-      <h2>Welcome Back!</h2>
-      <h6>To login, please enter your details.</h6>
-  
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" formControlName="email" class="form-control" id="email" placeholder="e.g Lisa@gmail.com" aria-label="Email Address">
-        <div *ngIf="login.get('email')?.invalid && (login.get('email')?.dirty || login.get('email')?.touched)" class="text-danger">
-          <p *ngIf="login.get('email')?.errors?.['required']">Email is required.</p>
-          <p *ngIf="login.get('email')?.errors?.['email']">Invalid email format.</p>
-        </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" formControlName="email" class="form-control" id="email" placeholder="e.g Lisa@gmail.com" aria-label="Email Address">
+      <div *ngIf="login.get('email')?.invalid && (login.get('email')?.dirty || login.get('email')?.touched)" class="text-danger">
+        <p *ngIf="login.get('email')?.errors?.['required']">Email is required.</p>
+        <p *ngIf="login.get('email')?.errors?.['email']">Invalid email format.</p>
       </div>
-  
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" formControlName="password" class="form-control" id="password" placeholder="*******" aria-label="Password">
-        <p>Forgot password? <a [routerLink]="['/reset-password']">Reset here</a></p>
-        <div *ngIf="login.get('password')?.invalid && (login.get('password')?.dirty || login.get('password')?.touched)" class="text-danger">
-          <p *ngIf="login.get('password')?.errors?.['required']">Password is required.</p>
-        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" formControlName="password" class="form-control" id="password" placeholder="*******" aria-label="Password">
+      <p>Forgot password? <a [routerLink]="['/reset-password']">Reset here</a></p>
+      <div *ngIf="login.get('password')?.invalid && (login.get('password')?.dirty || login.get('password')?.touched)" class="text-danger">
+        <p *ngIf="login.get('password')?.errors?.['required']">Password is required.</p>
       </div>
-  
-      <button type="submit" [disabled]="login.invalid">Login</button>
-      <br>
-      <br>
-      <p *ngIf="error" class="text-danger">{{ error }}</p>
-  
-      <p>Don't have an account? <a routerLink="/register">Register</a></p>
-    </form>
-  </div>
-  
+    </div>
+
+    <button type="submit" [disabled]="login.invalid">Login</button>
+    <br>
+    <br>
+    <p *ngIf="error" class="text-danger">{{ error }}</p>
+
+    <p>Don't have an account? <a (click)="switchToRegister()">Register</a></p>
+  </form>
+
+  <!-- Register Form -->
+  <form *ngIf="!isLoginForm" class="form-container" [formGroup]="register" (ngSubmit)="registerForm()">
+    <h2>Create Account</h2>
+    <h6>To register, please enter your details.</h6>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" formControlName="email" class="form-control" id="email" placeholder="e.g Lisa@gmail.com" aria-label="Email Address">
+      <div *ngIf="register.get('email')?.invalid && (register.get('email')?.dirty || register.get('email')?.touched)" class="text-danger">
+        <p *ngIf="register.get('email')?.errors?.['required']">Email is required.</p>
+        <p *ngIf="register.get('email')?.errors?.['email']">Invalid email format.</p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" formControlName="password" class="form-control" id="password" placeholder="*******" aria-label="Password">
+      <div *ngIf="register.get('password')?.invalid && (register.get('password')?.dirty || register.get('password')?.touched)" class="text-danger">
+        <p *ngIf="register.get('password')?.errors?.['required']">Password is required.</p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" formControlName="confirmPassword" class="form-control" id="confirmPassword" placeholder="*******" aria-label="Confirm Password">
+      <div *ngIf="register.get('confirmPassword')?.invalid && (register.get('confirmPassword')?.dirty || register.get('confirmPassword')?.touched)" class="text-danger">
+        <p *ngIf="register.get('confirmPassword')?.errors?.['required']">Confirm Password is required.</p>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="register.invalid">Register</button>
+    <br>
+    <br>
+    <p *ngIf="error" class="text-danger">{{ error }}</p>
+
+    <p>Already have an account? <a (click)="switchToLogin()">Login</a></p>
+  </form>
+</div>

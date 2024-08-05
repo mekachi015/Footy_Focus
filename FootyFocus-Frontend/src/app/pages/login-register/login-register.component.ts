@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth service/auth.service';
-import { Router } from '@angular/router'; 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-login-register',
   templateUrl: './login-register.component.html',
@@ -9,39 +8,50 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginRegisterComponent implements OnInit {
 
-  login: FormGroup = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.required]
-  }); // Initialize the form group
-  error: string | null = null;
+  login: FormGroup;
+  register: FormGroup;
+  isLoginForm: boolean = true;
   successMessage: string | null = null;
+  error: string | null = null;
 
-  constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private router: Router
-  ) {}
+  constructor(private fb: FormBuilder) {
+    this.login = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
+    });
 
-  ngOnInit(): void {
-    // Initialization logic if needed
+    this.register = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
+      confirmPassword: ['', [Validators.required]]
+    });
   }
 
-  signInForm() {
-    if (this.login.invalid) {
-      return;
-    }
+  ngOnInit(): void {}
 
-    const { email, password } = this.login.value;
-    this.authService.login({ userName: email, password }).subscribe(
-      (response) => {
-        localStorage.setItem('token', response.token);
-        console.log('Login successful', response);
-        this.router.navigate(['/home']);
-      },
-      (error) => {
-        this.error = 'Login error: ' + (error?.message || 'Unknown error');
-        console.error('Login error', error);
-      }
-    );
+  signInForm(): void {
+    if (this.login.valid) {
+      // Perform login logic
+      this.successMessage = 'Login successful!';
+    } else {
+      this.error = 'Please fill in all fields correctly.';
+    }
+  }
+
+  registerForm(): void {
+    if (this.register.valid) {
+      // Perform register logic
+      this.successMessage = 'Registration successful!';
+    } else {
+      this.error = 'Please fill in all fields correctly.';
+    }
+  }
+
+  switchToLogin(): void {
+    this.isLoginForm = true;
+  }
+
+  switchToRegister(): void {
+    this.isLoginForm = false;
   }
 }
