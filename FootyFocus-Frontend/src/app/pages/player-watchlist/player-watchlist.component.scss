@@ -1,0 +1,84 @@
+.watchlist-container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .watchlist-container h2,
+  .watchlist-container h3 {
+    text-align: center;
+  }
+  
+  .watchlist-container form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .watchlist-container form input {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+  
+  .watchlist-container form button {
+    padding: 8px 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .watchlist-container form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .watchlist-container div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .watchlist-container div img {
+    height: 40px;
+    margin-right: 20px;
+  }
+  
+  .watchlist-container div button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  
+  .watchlist-container div button:hover {
+    background-color: #c82333;
+  }
+  
+  .watchlist-container button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .watchlist-container button:hover {
+    background-color: #218838;
+  }
+  
