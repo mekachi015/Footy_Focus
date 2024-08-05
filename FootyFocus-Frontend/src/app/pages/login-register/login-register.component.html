@@ -5,6 +5,8 @@
 
   <app-alert-modal [success]="successMessage" *ngIf="successMessage" (close)="successMessage = null"></app-alert-modal>
 
+  <div class="loader" *ngIf="isLoading"></div>
+
   <!-- Login Form -->
   <form *ngIf="isLoginForm" class="form-container" [formGroup]="login" (ngSubmit)="signInForm()">
     <h2>Welcome Back!</h2>
