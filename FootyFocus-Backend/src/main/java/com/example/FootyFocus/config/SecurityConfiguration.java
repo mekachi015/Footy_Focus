@@ -41,7 +41,7 @@ public class SecurityConfiguration {
                                 "/api/v1/demo-controller",
                                 "/api/v1/appointment/**",
                                 "/api/v1/doctor/**",
-                                "/swagger-ui/**","/v4/persons/44","v4/competitions/**","v4/competitions/PL/standings?season={season}","v4/persons/",
+                                "/swagger-ui/**","v4/competitions/**","v4/competitions/PL/standings?season={season}","v4/persons/**","v4/persons/fetch/",
                                 "/v3/api-docs/**")
                         .permitAll()
                         .anyRequest()
