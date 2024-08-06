@@ -4,14 +4,14 @@
   </a>
 
   <app-alert-modal [success]="successMessage" *ngIf="successMessage" (close)="successMessage = null"></app-alert-modal>
-
+  
   <div class="loader" *ngIf="isLoading"></div>
-
+  
   <!-- Login Form -->
-  <form *ngIf="isLoginForm" class="form-container" [formGroup]="login" (ngSubmit)="signInForm()">
+  <form *ngIf="isLoginForm" class="form-container" [formGroup]="login" (ngSubmit)="onLogin()">
     <h2>Welcome Back!</h2>
     <h6>To login, please enter your details.</h6>
-
+    
     <div class="form-group">
       <label for="email">Email:</label>
       <input type="email" formControlName="email" class="form-control" id="email" placeholder="e.g Lisa@gmail.com" aria-label="Email Address">
@@ -20,7 +20,7 @@
         <p *ngIf="login.get('email')?.errors?.['email']">Invalid email format.</p>
       </div>
     </div>
-
+    
     <div class="form-group">
       <label for="password">Password:</label>
       <input type="password" formControlName="password" class="form-control" id="password" placeholder="*******" aria-label="Password">
@@ -29,20 +29,36 @@
         <p *ngIf="login.get('password')?.errors?.['required']">Password is required.</p>
       </div>
     </div>
-
+    
     <button type="submit" [disabled]="login.invalid">Login</button>
     <br>
     <br>
     <p *ngIf="error" class="text-danger">{{ error }}</p>
-
+    
     <p>Don't have an account? <a (click)="switchToRegister()">Register</a></p>
   </form>
-
+  
   <!-- Register Form -->
   <form *ngIf="!isLoginForm" class="form-container" [formGroup]="register" (ngSubmit)="registerForm()">
     <h2>Create Account</h2>
     <h6>To register, please enter your details.</h6>
-
+    
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input type="text" formControlName="firstName" class="form-control" id="firstName" placeholder="e.g Lisa" aria-label="First Name">
+      <div *ngIf="register.get('firstName')?.invalid && (register.get('firstName')?.dirty || register.get('firstName')?.touched)" class="text-danger">
+        <p *ngIf="register.get('firstName')?.errors?.['required']">First name is required.</p>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input type="text" formControlName="lastName" class="form-control" id="lastName" placeholder="e.g Smith" aria-label="Last Name">
+      <div *ngIf="register.get('lastName')?.invalid && (register.get('lastName')?.dirty || register.get('lastName')?.touched)" class="text-danger">
+        <p *ngIf="register.get('lastName')?.errors?.['required']">Last name is required.</p>
+      </div>
+    </div>
+    
     <div class="form-group">
       <label for="email">Email:</label>
       <input type="email" formControlName="email" class="form-control" id="email" placeholder="e.g Lisa@gmail.com" aria-label="Email Address">
@@ -51,7 +67,7 @@
         <p *ngIf="register.get('email')?.errors?.['email']">Invalid email format.</p>
       </div>
     </div>
-
+    
     <div class="form-group">
       <label for="password">Password:</label>
       <input type="password" formControlName="password" class="form-control" id="password" placeholder="*******" aria-label="Password">
@@ -59,7 +75,7 @@
         <p *ngIf="register.get('password')?.errors?.['required']">Password is required.</p>
       </div>
     </div>
-
+    
     <div class="form-group">
       <label for="confirmPassword">Confirm Password:</label>
       <input type="password" formControlName="confirmPassword" class="form-control" id="confirmPassword" placeholder="*******" aria-label="Confirm Password">
@@ -67,12 +83,12 @@
         <p *ngIf="register.get('confirmPassword')?.errors?.['required']">Confirm Password is required.</p>
       </div>
     </div>
-
+    
     <button type="submit" [disabled]="register.invalid">Register</button>
     <br>
     <br>
     <p *ngIf="error" class="text-danger">{{ error }}</p>
-
+    
     <p>Already have an account? <a (click)="switchToLogin()">Login</a></p>
   </form>
 </div>

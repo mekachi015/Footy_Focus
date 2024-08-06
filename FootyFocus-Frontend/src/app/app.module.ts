@@ -9,9 +9,10 @@ import { LeagueStandingComponent } from './pages/league-standing/league-standing
 import { FormsModule } from '@angular/forms';
 import { LoginRegisterComponent } from './pages/login-register/login-register.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AlertModalComponent } from './models/alert-modal/alert-modal.component';
+import { AlertModalComponent } from './components/alert-modal/alert-modal.component';
 import { PlayerWatchlistComponent } from './pages/player-watchlist/player-watchlist.component';
 import { RouterModule } from '@angular/router';
+import { NavbarComponent } from './components/navbar/navbar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,8 @@ import { RouterModule } from '@angular/router';
     LeagueStandingComponent,
     LoginRegisterComponent,
     AlertModalComponent,
-    PlayerWatchlistComponent
+    PlayerWatchlistComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

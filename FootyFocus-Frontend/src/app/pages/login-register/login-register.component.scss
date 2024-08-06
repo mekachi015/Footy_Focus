@@ -1,125 +1,119 @@
 .login-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f8f9fa;
-  }
-  
-  .login-container img {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 20px;
-  }
-  
-  .form-container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  h2 {
-    text-align: center;
-    color: #333;
-  }
-  
-  h6 {
-    text-align: center;
-    color: #666;
-    margin-bottom: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-  }
-  
-  .form-control {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-  
-  .form-control:focus {
-    border-color: #007bff;
-    outline: none;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-  }
-  
-  .text-danger {
-    color: #dc3545;
-    font-size: 14px;
-  }
-  
-  button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button[type="submit"]:disabled {
-    background-color: #6c757d;
-    cursor: not-allowed;
-  }
-  
-  button[type="submit"]:hover:not(:disabled) {
-    background-color: #0056b3;
-  }
-  
-  p {
-    text-align: center;
-    color: #666;
-    font-size: 14px;
-  }
-  
-  p a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  p a:hover {
-    text-decoration: underline;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f8f9fa;
+}
 
-  .loader {
-    border: 8px solid #f3f3f3; /* Light grey */
-    border-top: 8px solid #007bff; /* Blue */
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 1s linear infinite;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000; /* Ensure the loader is on top of other elements */
-    background-color: rgba(255, 255, 255, 0.8); /* Optional: Semi-transparent background */
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  /* Existing CSS code */
-  
+.login-container img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+}
 
+.form-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
 
- 
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+h6 {
+  text-align: center;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.text-danger {
+  color: #dc3545;
+  font-size: 14px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+p {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+}
+
+p a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+
+.loader {
+  border: 8px solid #f3f3f3; /* Light grey */
+  border-top: 8px solid #007bff; /* Blue */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* Ensure the loader is on top of other elements */
+  background-color: rgba(255, 255, 255, 0.8); /* Optional: Semi-transparent background */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

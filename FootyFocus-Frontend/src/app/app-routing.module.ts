@@ -4,12 +4,14 @@ import { PlayerPageComponent } from './pages/player-page/player-page.component';
 import { LeagueStandingComponent } from './pages/league-standing/league-standing.component';
 import { LoginRegisterComponent } from './pages/login-register/login-register.component';
 import { PlayerWatchlistComponent } from './pages/player-watchlist/player-watchlist.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 const routes: Routes = [
   {path: 'player', component:PlayerPageComponent},
   {path: 'league-standings', component:LeagueStandingComponent},
   {path: 'login', component:LoginRegisterComponent},
-  {path: 'player-wishlist', component: PlayerWatchlistComponent}
+  {path: 'player-wishlist', component: PlayerWatchlistComponent},
+  {path: 'navbar', component: NavbarComponent}
 ];
 
 @NgModule({
