@@ -39,9 +39,12 @@ public class SecurityConfiguration {
                                 "/api/v1/auth/register",
                                 "/api/v1/auth/authenticate",
                                 "/api/v1/demo-controller",
-                                "/api/v1/appointment/**",
-                                "/api/v1/doctor/**",
-                                "/swagger-ui/**","v4/competitions/**","v4/competitions/PL/standings?season={season}","v4/persons/**","v4/persons/fetch/",
+                                "/swagger-ui/**","v4/competitions/**",
+                                "v4/competitions/PL/standings?season={season}",
+                                "v4/persons/**",
+                                "v4/persons/fetch/",
+                                "/api/v1/auth/authenticate",
+                                "/api/v1/auth/register",
                                 "/v3/api-docs/**")
                         .permitAll()
                         .anyRequest()
