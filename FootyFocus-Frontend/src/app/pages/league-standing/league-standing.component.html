@@ -1,48 +1,55 @@
 <div class="container">
-
-    <!-- <span *ngIf="seasonYear!=null">
-         <img [src]="competitionEmblem" alt="">
-    </span> -->
+    <div class="emblem-container">
+      <div class="competition-emblem-container">
+        <img *ngIf="leagueStandings.length" [src]="leagueStandings[0].competitionEmblem" alt="Competition Emblem" class="competition-emblem">
+      </div>
+    </div>
+  
     <div class="input-field-container">
-    <div>
+      <span *ngIf="seasonYear != null"></span>
+      <div>
         <label for="leagueCode">Select League:</label>
         <select id="leagueCode" [(ngModel)]="selectedLeagueCode">
-            <option *ngFor="let league of leagueCodes" [value]="league.code">
-                {{ league.name }}
-            </option>
+          <option *ngFor="let league of leagueCodes" [value]="league.code">
+            {{ league.name }}
+          </option>
         </select>
-    </div>
+      </div>
   
-    <div>
+      <div>
         <label for="seasonYear">Enter Season Year:</label>
         <input id="seasonYear" type="number" [(ngModel)]="selectedSeasonYear">
-        </div>
-
-        <button (click)="fetchStandings()">Fetch Standings</button>
+      </div>
+  
+      <button (click)="fetchStandings()">Fetch Standings</button>
     </div>
   
-  
-
-    <div class="competition" *ngFor="let item of leagueStandings">
-
-        <div class="team-info">
-
-            <img [src]="item.teamCrest" [alt]="item.teamName" class="teamCrest">
-            <span class>{{item.position}}</span>
-
-            <span> {{item.teamName}}</span>
-
-            <span> {{item.teamShortName}}</span>
-
-            <span> {{item.teamForm}}</span>
-
-            <span> matches played: {{item.matchesPlayed}}</span>
-
-            <span> won: {{item.gamesWon}} </span>
-
-            <span> lost: {{item.gamesLost}} </span>
-
-            <span> points: {{item.noOfPoints}}</span>
-
-        </div>
+    <!-- Headers for the standings table -->
+    <div class="standings-header">
+      <div class="team-info">
+        <span>Position</span>
+        <span>Team Name</span>
+        <span>Short Name</span>
+        <span>Form</span>
+        <span>Matches Played</span>
+        <span>Won</span>
+        <span>Lost</span>
+        <span>Points</span>
+      </div>
     </div>
+  
+    <div class="competition" *ngFor="let item of getLimitedStandings()">
+      <div class="team-info">
+        <img [src]="item.teamCrest" [alt]="item.teamName" class="teamCrest">
+        <span>{{item.position}}</span>
+        <span>{{item.teamName}}</span>
+        <span>{{item.teamShortName}}</span>
+        <span>{{item.teamForm}}</span>
+        <span>{{item.matchesPlayed}}</span>
+        <span>{{item.gamesWon}}</span>
+        <span>{{item.gamesLost}}</span>
+        <span>{{item.noOfPoints}}</span>
+      </div>
+    </div>
+  </div>
+  

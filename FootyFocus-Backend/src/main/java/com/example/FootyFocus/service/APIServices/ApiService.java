@@ -39,6 +39,7 @@ public class ApiService {
         }
 
         Person person = new Person();
+        person.setId(id);
         person.setName((String) body.get("name"));
         person.setDateOfBirth((String) body.get("dateOfBirth"));
         person.setNationality((String) body.get("nationality"));
@@ -48,15 +49,20 @@ public class ApiService {
         Map<String, Object> currentTeam = (Map<String, Object>) body.get("currentTeam");
         if (currentTeam != null) {
             person.setTeamName((String) currentTeam.get("name"));
-            person.setTeamCode((String) currentTeam.get("code"));
-            person.setTeamFlag((String) currentTeam.get("flag"));
+
+            Map<String, Object> area = (Map<String, Object>) currentTeam.get("area");
+            if (area != null) {
+                person.setTeamFlag((String) area.get("flag"));
+                person.setTeamCode((String) area.get("tla"));
+            }
         }
 
         return person;
     }
 
 
-    public Long searchPersonByName(String name) {
+
+    public List<Map<String, Object>> fetchAllPlayers() {
         RestTemplate restTemplate = new RestTemplate();
 
         HttpHeaders headers = new HttpHeaders();
@@ -64,22 +70,48 @@ public class ApiService {
 
         HttpEntity<String> entity = new HttpEntity<>(headers);
 
-        String searchUrl = API_URL + "?name=" + name;
-        ResponseEntity<List> response = restTemplate.exchange(searchUrl, HttpMethod.GET, entity, List.class);
+        ResponseEntity<List> response = restTemplate.exchange(API_URL, HttpMethod.GET, entity, List.class);
         List<Map<String, Object>> body = response.getBody();
 
         if (body == null || body.isEmpty()) {
-            throw new RuntimeException("No player found with name: " + name);
+            throw new RuntimeException("No players found.");
         }
 
-        Map<String, Object> player = body.get(0); // Assuming the first match is taken
-        return ((Number) player.get("id")).longValue();
+        return body;
+    }
+
+    public Long searchPersonByName(String name) {
+        List<Map<String, Object>> players = fetchAllPlayers();
+
+        for (Map<String, Object> player : players) {
+            if (name.equalsIgnoreCase((String) player.get("name"))) {
+                return ((Number) player.get("id")).longValue();
+            }
+        }
+
+        throw new RuntimeException("No player found with name: " + name);
     }
 
     public Person fetchPersonByName(String name) {
         Long id = searchPersonByName(name);
         return fetchPersonFromApi(id);
     }
+
+//    public void addPlayerToWatchlist(String name) {
+//        Long id = searchPersonByName(name);
+//        if (!watchlist.contains(id)) {
+//            watchlist.add(id);
+//        } else {
+//            throw new RuntimeException("Player is already in the watchlist.");
+//        }
+//    }
+//
+//    public List<Long> getWatchlist() {
+//        return watchlist;
+//    }
+
+
+
 }
 
 

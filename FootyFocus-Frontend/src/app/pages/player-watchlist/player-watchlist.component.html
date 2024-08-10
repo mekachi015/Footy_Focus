@@ -1,0 +1,27 @@
+<div class="watchlist-container">
+    <h2>Player Watchlist</h2>
+    
+    <form [formGroup]="searchForm" (ngSubmit)="searchPlayers()">
+      <input type="text" formControlName="query" placeholder="Search for a player...">
+      <button type="submit">Search</button>
+    </form>
+  
+    <div *ngIf="searchResults.length > 0">
+      <h3>Search Results</h3>
+      <div *ngFor="let player of searchResults">
+        <p>{{ player.name }} - {{ player.team }}</p>
+        <img [src]="player.clubLogo" alt="{{ player.team }} logo">
+        <button (click)="removePlayer(player.id)">Remove from Watchlist</button>
+      </div>
+    </div>
+  
+    <h3>Watchlist</h3>
+    <div *ngFor="let player of watchlist">
+      <p>{{ player.name }} - {{ player.team }}</p>
+      <img [src]="player.clubLogo" alt="{{ player.team }} logo">
+      <button (click)="removePlayer(player.id)">Remove from Watchlist</button>
+    </div>
+    
+    <button (click)="clearWatchlist()">Clear Watchlist</button>
+  </div>
+  
