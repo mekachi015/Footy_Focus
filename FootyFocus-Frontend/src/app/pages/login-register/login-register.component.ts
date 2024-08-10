@@ -63,7 +63,7 @@ export class LoginRegisterComponent implements OnInit {
     this.authService.loginUser(authRequest).subscribe({
       next: response => {
         console.log('Login successful');
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['league-standings']);
       },
       error: err => {
         console.error('Login failed', err);
@@ -82,7 +82,7 @@ export class LoginRegisterComponent implements OnInit {
       response => {
         this.isLoading = false;
         this.successMessage = 'Registration successful. Please login.';
-        this.switchToLogin();
+        this.router.navigate(['league-standings']);
       },
       error => {
         this.isLoading = false;

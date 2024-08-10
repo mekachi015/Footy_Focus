@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'league-standings', component:LeagueStandingComponent},
   {path: 'login', component:LoginRegisterComponent},
   {path: 'player-wishlist', component: PlayerWatchlistComponent},
-  {path: 'navbar', component: NavbarComponent}
+ 
 ];
 
 @NgModule({

@@ -1,7 +1,7 @@
 <!-- navbar.component.html -->
 <nav class="navbar">
     <ul class="nav-list">
-      <li class="nav-item">
+      <li class="nav-item" (click)="navigateToHome()">
         <a routerLink="/home" routerLinkActive="active" class="nav-link">
           <i class="icon-home"></i>
           <span>Home</span>
@@ -10,7 +10,7 @@
           </svg></span>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item"  (click)="navigateLeagueStandings()">
         <a routerLink="/profile" routerLinkActive="active" class="nav-link">
           <i class="icon-user"></i>
           <span>Tables</span>
@@ -19,7 +19,7 @@
           </svg></span>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" (click)="navigateToTop10()">
         <a routerLink="/notifications" routerLinkActive="active" class="nav-link">
           <i class="icon-bell"></i>
           <span>Top 10</span>
@@ -28,7 +28,7 @@
           </svg></span>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" (click)="navigateToWatchlist()">
         <a routerLink="/settings" routerLinkActive="active" class="nav-link">
           <i class="icon-cog"></i>
           <span>Watchlist</span>
@@ -38,7 +38,7 @@
           </svg></span>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" (click)="navigateToProfile()">
         <a routerLink="/logout" routerLinkActive="active" class="nav-link">
           <i class="icon-logout"></i>
           <span>Profile</span>
