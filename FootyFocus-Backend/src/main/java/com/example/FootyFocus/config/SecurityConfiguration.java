@@ -37,15 +37,11 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/v1/auth/**",
                                 "/api/v1/auth/register",
-                                "/api/v1/auth/authenticate",
-                                "/api/v1/demo-controller",
-                                "/swagger-ui/**","v4/competitions/**",
+                                "/api/v1/auth/authenticate"
+                                ,"v4/competitions/**",
                                 "v4/competitions/PL/standings?season={season}",
                                 "v4/persons/**",
-                                "v4/persons/fetch/",
-                                "/api/v1/auth/authenticate",
-                                "/api/v1/auth/register",
-                                "/v3/api-docs/**")
+                                "v4/persons/fetch/")
                         .permitAll()
                         .anyRequest()
                         .authenticated()

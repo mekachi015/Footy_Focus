@@ -1,7 +1,6 @@
 package com.example.FootyFocus.service.APIServices;
 
 import com.example.FootyFocus.entity.Person;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +12,7 @@ public class FetchPlayerService {
     private ApiService apiService;
 
 
-    public PlayerApiService(ApiService apiService){
+    public void PlayerApiService(ApiService apiService){
         this.apiService = apiService;
         return;
     }
@@ -28,7 +27,7 @@ public class FetchPlayerService {
             Long id = searchPersonByFullName(fullname);
             return apiService.fetchPersonFromApi(id);
         } catch ( Exception e){
-            throw new RuntimeException("Error fetching player information" + e.getMessage())
+            throw new RuntimeException("Error fetching player information" + e.getMessage());
         }
     }
 
