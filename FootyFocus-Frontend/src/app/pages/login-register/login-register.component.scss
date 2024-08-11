@@ -182,3 +182,33 @@ display: none;
   color: #ffeba7;
   box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
 }
+
+body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1f2029;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  bottom: 7rem;
+  left: 2rem
+}
+
+.card-3d-wrap {
+  margin-top: 0; /* Remove the margin-top to ensure it's fully centered */
+}
+
+.full-height {
+  // min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
