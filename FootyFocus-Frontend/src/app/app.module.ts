@@ -13,6 +13,7 @@ import { AlertModalComponent } from './components/alert-modal/alert-modal.compon
 import { PlayerWatchlistComponent } from './pages/player-watchlist/player-watchlist.component';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { MatchdayComponent } from './pages/matchday/matchday.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     LoginRegisterComponent,
     AlertModalComponent,
     PlayerWatchlistComponent,
-    NavbarComponent
+    NavbarComponent,
+    MatchdayComponent
   ],
   imports: [
     BrowserModule,
