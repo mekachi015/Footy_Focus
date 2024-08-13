@@ -51,7 +51,7 @@ public class MatchesApiService {
             Map<String, Object> homeTeam = (Map<String, Object>) match.get("homeTeam");
             Map<String, Object> awayTeam = (Map<String, Object>) match.get("awayTeam");
             Map<String, Object> score = (Map<String, Object>) match.get("score");
-
+            List<Map<String, Object>> referees = (List<Map<String, Object>>) match.get("referees");
             // Extract competition details
             matchInfo.setCompName((String) competition.get("name"));
             matchInfo.setCompEmblem((String) competition.get("emblem"));
@@ -78,6 +78,14 @@ public class MatchesApiService {
             Map<String, Object> halfTimeScores = (Map<String, Object>) score.get("halfTime");
             matchInfo.setHomeHalfScore(((Number) halfTimeScores.get("home")).intValue());
             matchInfo.setAwayHalfScore(((Number) halfTimeScores.get("away")).intValue());
+
+            //gets a list of referee objects
+            if (!referees.isEmpty()) {
+                Map<String, Object> referee = referees.get(0);
+                matchInfo.setRefName((String) referee.get("name"));
+                matchInfo.setRefNationality((String) referee.get("nationality"));
+            }
+
 
             matchInfoList.add(matchInfo);
         }
