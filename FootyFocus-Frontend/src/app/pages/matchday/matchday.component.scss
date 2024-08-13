@@ -1,11 +1,11 @@
 .container {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 100vw;
     margin: 0 auto;
-    padding: 20px;
     border-radius: 5px;
     background-color: #f5f5f5;
+    margin-bottom: 4rem;
   }
   
   .filters {
@@ -119,6 +119,7 @@
   
   .team-name {
     font-weight: bold;
+    font-size: 1rem;
   }
   
   .match-details {
@@ -129,15 +130,21 @@
   }
   
   .match-date,
-  .match-time-lapsed,
-  .match-referee {
+  .match-time-lapsed {
     margin-bottom: 5px;
     font-size: 13px;
     color: #666;
+    display: inline;
+    width: auto;
+  }
+
+  .match-referee{
+    display: inline-block;
+    font-size: 10px;
   }
   
   .match-score {
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: bold;
     display: flex;
     align-items: center;

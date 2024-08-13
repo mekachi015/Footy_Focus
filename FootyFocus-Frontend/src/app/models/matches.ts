@@ -15,5 +15,6 @@ export interface Match {
     awayFullScore: number;
     homeHalfScore: number;
     awayHalfScore: number;
+    refName: string;
   }
   
