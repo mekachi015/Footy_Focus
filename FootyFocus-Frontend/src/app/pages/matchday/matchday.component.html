@@ -18,16 +18,17 @@
         placeholder="Matchday"
       />
       <button (click)="fetchMatches()">Fetch Matches</button>
+
+      <div class="competition-emblem" *ngIf="matches.length > 0">
+        <img [src]="matches[0].compEmblem" [alt]="matches[0].compName" />
+        <span>{{ matches[0].compName }}</span>
+      </div>
     </div>
   
     <div *ngIf="error" class="error">{{ error }}</div>
   
     <div *ngFor="let match of matches" class="match">
-      <div class="match-header">
-        <div class="match-tournament">
-          <img [src]="match.compEmblem" [alt]="match.compName" />{{ match.compName }}
-        </div>
-      </div>
+      
       <div class="match-content">
         <div class="column">
           <div class="team team--home">
