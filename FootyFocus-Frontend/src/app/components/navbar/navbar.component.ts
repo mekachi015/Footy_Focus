@@ -10,7 +10,7 @@ export class NavbarComponent {
   constructor(private router: Router){}
 
   navigateToHome() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/matchday']);
   }
 
   navigateToTop10() {

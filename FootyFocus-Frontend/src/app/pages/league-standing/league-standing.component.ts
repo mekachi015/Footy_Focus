@@ -48,8 +48,10 @@ export class LeagueStandingComponent implements OnInit {
     )
   }
 
-  getLimitedStandings(): any[] {
-    return this.leagueStandings.slice(0, 20); // Limit to the first 20 teams
+  getLimitedStandings(): LeagueStandings[] {
+    const teamLimit = this.selectedLeagueCode === 'BL1' || this.selectedLeagueCode === 'FL1' || this.selectedLeagueCode === 'DED' ? 18 : 20;
+    const uniqueStandings = this.filterDuplicates(this.leagueStandings);
+    return uniqueStandings.slice(0, teamLimit);
   }
 
   filterDuplicates(standings: LeagueStandings[]): LeagueStandings[] {
@@ -59,8 +61,10 @@ export class LeagueStandingComponent implements OnInit {
         uniqueTeams.set(item.teamName, item);
       }
     });
-    return Array.from(uniqueTeams.values()).slice(0, 20); // Limit to the first 20 unique teams
+    return Array.from(uniqueTeams.values());
   }
 
-  
+  //Ligue1 - 18
+  //bundesliga - 18
+  // eredivisie - 
 }

@@ -16,8 +16,7 @@ public class LeagueStandingsController {
     private LeagueStandingsServiceAPI leagueStandingsServiceAPI;
 
     @GetMapping("/{leagueCode}/standings")
-    public List<LeagueStandings> getStandings(
-            @PathVariable String leagueCode, @RequestParam int season) {
+    public List<LeagueStandings> getStandings(@PathVariable String leagueCode, @RequestParam int season) {
         return leagueStandingsServiceAPI.fetchStandingsFromApi(leagueCode, season);
     }
 }

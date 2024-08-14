@@ -41,3 +41,49 @@ h2 {
   margin: 5px 0;
   color: #333;
 }
+
+@media (min-width: 430px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .controls {
+    flex-direction: column;
+    margin-bottom: 2px;
+    gap: 5px;
+  }
+
+  label {
+    font-size: 12px;
+  }
+
+  select, input {
+    padding: 6px;
+  }
+
+  button {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .team-crest {
+    max-width: 60px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+
+  h3 {
+    font-size: 14px;
+  }
+
+  .team-name {
+    font-size: 12px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+}

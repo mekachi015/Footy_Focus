@@ -1,0 +1,171 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    margin-bottom: 4rem;
+  }
+  
+  .filters {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .filters select {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-right: 10px;
+  }
+  
+  .filters input[type="number"] {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 70px;
+  }
+  
+  .filters button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #3f51b5;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .error {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .match {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+    margin-bottom: 15px;
+  }
+  
+  .match-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .match-status {
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #f00; /* Change color based on match status (live, finished, etc.) */
+  }
+  
+  .match-tournament {
+    display: flex;
+    align-items: center;
+  }
+  
+  .match-tournament img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+  
+  .match-actions {
+    display: flex;
+  }
+  
+  .match-actions button {
+    margin-left: 10px;
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  
+  .match-actions button i {
+    font-size: 18px;
+    color: #999;
+  }
+  
+  .match-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .column {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  
+  .team {
+    display: flex;
+    align-items: center;
+  }
+  
+  .team-logo img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  .team-name {
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  .match-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+  }
+  
+  .match-date,
+  .match-time-lapsed {
+    margin-bottom: 5px;
+    font-size: 13px;
+    color: #666;
+    display: inline;
+    width: auto;
+  }
+
+  .match-referee{
+    display: inline-block;
+    font-size: 10px;
+  }
+  
+  .match-score {
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+  
+  .match-score-number {
+    margin: 0 5px;
+  }
+  
+  .match-score-number--leading {
+    color: #f00; /* Highlight leading team score */
+  }
+  
+  .match-bet-options {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  
+  .match-bet-option {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }  

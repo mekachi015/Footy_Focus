@@ -27,13 +27,13 @@
     <!-- Headers for the standings table -->
     <div class="standings-header">
       <div class="team-info">
+        <span> </span>
         <span>Position</span>
-        <span>Team Name</span>
         <span>Short Name</span>
         <span>Form</span>
         <span>Matches Played</span>
         <span>Won</span>
-        <span>Lost</span>
+        <span>Loss</span>
         <span>Points</span>
       </div>
     </div>
@@ -41,11 +41,10 @@
     <div class="competition" *ngFor="let item of getLimitedStandings()">
       <div class="team-info">
         <img [src]="item.teamCrest" [alt]="item.teamName" class="teamCrest">
-        <span>{{item.position}}</span>
-        <span>{{item.teamName}}</span>
-        <span>{{item.teamShortName}}</span>
-        <span>{{item.teamForm}}</span>
-        <span>{{item.matchesPlayed}}</span>
+        <span class = "team-">{{item.position}}</span>
+        <span class = "team-shortname">{{item.teamShortName}}</span>
+        <span >{{item.teamForm}}</span>
+        <span >{{item.matchesPlayed}}</span>
         <span>{{item.gamesWon}}</span>
         <span>{{item.gamesLost}}</span>
         <span>{{item.noOfPoints}}</span>

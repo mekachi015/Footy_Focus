@@ -5,12 +5,14 @@ import { LeagueStandingComponent } from './pages/league-standing/league-standing
 import { LoginRegisterComponent } from './pages/login-register/login-register.component';
 import { PlayerWatchlistComponent } from './pages/player-watchlist/player-watchlist.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { MatchdayComponent } from './pages/matchday/matchday.component';
 
 const routes: Routes = [
   {path: 'player', component:PlayerPageComponent},
   {path: 'league-standings', component:LeagueStandingComponent},
   {path: 'login', component:LoginRegisterComponent},
   {path: 'player-wishlist', component: PlayerWatchlistComponent},
+  {path: 'matchday', component: MatchdayComponent}
  
 ];
 
