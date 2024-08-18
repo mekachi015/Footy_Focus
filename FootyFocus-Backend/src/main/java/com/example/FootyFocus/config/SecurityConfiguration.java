@@ -42,7 +42,8 @@ public class SecurityConfiguration {
                                 "v4/competitions/PL/standings?season={season}",
                                 "v4/persons/**",
                                 "v4/persons/fetch/",
-                                "v4/competitions/PL/matches?matchday={matchday}")
+                                "v4/competitions/PL/matches?matchday={matchday}",
+                                "/players")
                         .permitAll()
                         .anyRequest()
                         .authenticated()

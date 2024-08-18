@@ -79,7 +79,7 @@ public class MatchesApiService {
             matchInfo.setHomeHalfScore(((Number) halfTimeScores.get("home")).intValue());
             matchInfo.setAwayHalfScore(((Number) halfTimeScores.get("away")).intValue());
 
-            //gets a list of referee objects
+            //gets a list of referee object
             if (!referees.isEmpty()) {
                 Map<String, Object> referee = referees.get(0);
                 matchInfo.setRefName((String) referee.get("name"));
