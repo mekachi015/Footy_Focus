@@ -1,27 +1,27 @@
-<div class="watchlist-container">
-    <h2>Player Watchlist</h2>
-    
-    <form [formGroup]="searchForm" (ngSubmit)="searchPlayers()">
-      <input type="text" formControlName="query" placeholder="Search for a player...">
-      <button type="submit">Search</button>
-    </form>
+<div class="player-search-container">
+  <h2>Search Players</h2>
   
-    <div *ngIf="searchResults.length > 0">
-      <h3>Search Results</h3>
-      <div *ngFor="let player of searchResults">
-        <p>{{ player.name }} - {{ player.team }}</p>
-        <img [src]="player.clubLogo" alt="{{ player.team }} logo">
-        <button (click)="removePlayer(player.id)">Remove from Watchlist</button>
-      </div>
-    </div>
-  
-    <h3>Watchlist</h3>
-    <div *ngFor="let player of watchlist">
-      <p>{{ player.name }} - {{ player.team }}</p>
-      <img [src]="player.clubLogo" alt="{{ player.team }} logo">
-      <button (click)="removePlayer(player.id)">Remove from Watchlist</button>
-    </div>
-    
-    <button (click)="clearWatchlist()">Clear Watchlist</button>
+  <label for="league">Select League:</label>
+  <select id="league" [(ngModel)]="selectedLeague">
+    <option *ngFor="let league of leagues" [value]="league.code">{{ league.name }}</option>
+  </select>
+
+  <label for="season">Select Season:</label>
+  <select id="season" [(ngModel)]="selectedSeason">
+    <option *ngFor="let season of seasons" [value]="season">{{ season }}</option>
+  </select>
+
+  <label for="search">Search Query:</label>
+  <input id="search" [(ngModel)]="searchQuery" placeholder="Enter player name">
+
+  <button (click)="fetchPlayers()">Fetch Players</button>
+
+  <div *ngIf="players.length > 0">
+    <h3>Player Results:</h3>
+    <ul>
+      <li *ngFor="let player of players">
+        {{ player.firstName }} {{ player.lastName }} - {{ player.teamName }}
+      </li>
+    </ul>
   </div>
-  
+</div>

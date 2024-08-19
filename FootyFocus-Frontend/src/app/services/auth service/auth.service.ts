@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
 import { environment } from 'src/app/components/enviroment files/enviroment';
@@ -29,11 +29,20 @@ import { RegisterRequest } from 'src/app/models/RegisterRequest';
   }
 
   login(request: AuthenticationRequest): Observable<AuthenticationResponse> {
-    return this.http.post<AuthenticationResponse>(`${this.apiUrl}/authenticate`, request);
+    return this.http.post<AuthenticationResponse>(`${this.apiUrl}/authenticate`, request)
+      .pipe(
+        tap(response => {
+          this.token = response.token;  // Store the token
+          localStorage.setItem('authToken', this.token);  // Optionally store in local storage
+        })
+      );
   }
 
   getUserInfo(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/user`);
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    });
+    return this.http.get<any>(`${this.apiUrl}/user`, { headers });
   }
   
   
