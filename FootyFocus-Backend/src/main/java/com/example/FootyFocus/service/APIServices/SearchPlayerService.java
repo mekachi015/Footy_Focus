@@ -70,6 +70,14 @@ public class SearchPlayerService {
                     Map<String, Object> team = (Map<String, Object>) stats.get("team");
                     Map<String, Object> games = (Map<String, Object>) stats.get("games");
                     Map<String, Object> goals = (Map<String, Object>) stats.get("goals");
+                    Map<String, Object> passes = (Map<String, Object>) stats.get("passes");
+                    Map<String, Object> tackles = (Map<String, Object>) stats.get("takcles");
+                    Map<String, Object>  duels = (Map<String, Object>) stats.get("duels");
+                    Map<String, Object> dribbles = (Map<String, Object>) stats.get("dribbles");
+                    Map<String, Object> foul = (Map<String, Object>) stats.get("foul");
+                    Map<String, Object> cards = (Map<String, Object>) stats.get("cards");
+                    Map<String, Object> penalty = (Map<String, Object>) stats.get("penalty");
+
 
                     PlayerInfo playerInfo = new PlayerInfo();
                     playerInfo.setFirstname((String) player.get("firstname"));
@@ -90,9 +98,33 @@ public class SearchPlayerService {
 
                     //playerInfo.setAppearances((Integer) games.get("appearances"));
                     playerInfo.setPosition((String) games.get("position"));
+                    playerInfo.setAppearances((int) games.get("appearances"));
+                    playerInfo.setCaptain((boolean) games.get("captain"));
 
-                    playerInfo.setGoals((Integer) goals.get("total"));
-                    playerInfo.setAssists((Integer) goals.get("assists"));
+
+                    playerInfo.setGoals((int) goals.get("total"));
+                    playerInfo.setAssists((int) goals.get("assists"));
+                    playerInfo.setGoalsConceded((int) goals.get("conceded"));
+                    playerInfo.setSaves((int) goals.get("saves"));
+
+                    playerInfo.setTotalPasses((int) passes.get("total"));
+                    playerInfo.setKeyPasses((int) passes.get("key"));
+                    playerInfo.setPassAccuracy((int) passes.get("accuracy"));
+
+                    playerInfo.setTotalTackles((int) tackles.get("total"));
+                    playerInfo.setBlocks((int) tackles.get("blocks"));
+                    playerInfo.setInterceptions((int) tackles.get("interceptions"));
+
+                    playerInfo.setTotalDuels((int) duels.get("total"));
+                    playerInfo.setDuelsWon((int) duels.get("won"));
+
+                    playerInfo.setDribbleAttempts((int) dribbles.get("attempts"));
+                    playerInfo.setSuccessfulDribbles((int) dribbles.get("success"));
+
+                    playerInfo.setFoulsDrawn((int) foul.get("drawn"));
+                    playerInfo.setFoulsCommitted((int) foul.get("commited"));
+
+                    playerInfo.setYellowCards((int) cards.get("yellow"));
 
                     playerInfoList.add(playerInfo);
                 }

@@ -32,7 +32,7 @@ public class PlayerInfo {
 
     private int appearances;
     private String position;
-   // private float rating;
+    //private int rating;
     private boolean captain;
 
     private int totalShots;
@@ -41,7 +41,7 @@ public class PlayerInfo {
     private int goals;
     private int goalsConceded;
     private int assists;
-    private Integer saves;  // Nullable field
+    private int saves;  // Nullable field
 
     private int totalPasses;
     private int keyPasses;
@@ -64,10 +64,10 @@ public class PlayerInfo {
     private int yellowRedCards;
     private int redCards;
 
-    private Integer penaltiesWon;
-    private Integer penaltiesCommitted;
+    private int penaltiesWon;
+    private int penaltiesCommitted;
     private int penaltiesScored;
     private int penaltiesMissed;
-    private Integer penaltiesSaved;
+    private int penaltiesSaved;
 
 }
