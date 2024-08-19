@@ -43,7 +43,8 @@ public class SecurityConfiguration {
                                 "v4/persons/**",
                                 "v4/persons/fetch/",
                                 "v4/competitions/PL/matches?matchday={matchday}",
-                                "/players")
+                                "/api/players/search",
+                                "/players/**")
                         .permitAll()
                         .anyRequest()
                         .authenticated()

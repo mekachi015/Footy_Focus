@@ -30,7 +30,6 @@ public class AuthenticationController {
         return ResponseEntity.ok(service.authenticate(request));
     }
 
-
     @GetMapping("/user")
     public ResponseEntity<User> getUserInfo() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
