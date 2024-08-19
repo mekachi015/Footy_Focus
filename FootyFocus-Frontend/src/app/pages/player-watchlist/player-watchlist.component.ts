@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { PlayerInfo } from 'src/app/models/PlayerInfo';
 import { PlayerSearch } from 'src/app/models/playerSearch';
 
 import { PlayerWatchlist } from 'src/app/models/PlayerWatchlist';
+import { PlayerInfoService } from 'src/app/services/player info service/player-info.service';
 import { PlayerSearchService } from 'src/app/services/player search service/player-search.service';
 import { PlayerWatchlistService } from 'src/app/services/player watchlist service/player-watchlist.service';
 
@@ -27,24 +29,28 @@ export class PlayerWatchlistComponent implements OnInit {
   selectedSeason = 2023; // Default value
   searchQuery = '';
 
-  players: PlayerSearch[] = [];
+  players: PlayerInfo[] = [];
 
-  constructor(private playerService: PlayerSearchService) { }
+  constructor(
+    private playerService: PlayerInfoService,
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
-    // Initialization logic if needed
+    // Initialize form if needed
   }
 
   fetchPlayers(): void {
-    this.playerService.getPlayers(this.searchQuery, this.selectedLeague, this.selectedSeason)
-      .subscribe({
-        next: (data: PlayerSearch[]) => {
+    this.playerService.searchPlayers(this.searchQuery, this.selectedLeague, this.selectedSeason)
+      .subscribe(
+        (data: PlayerInfo[]) => {
           this.players = data;
-          console.log(this.players)
+          console.log(data);
         },
-        error: (err) => {
-          console.error('Error fetching player data', err);
+        error => {
+          console.error('Error fetching player data:', error);
         }
-      });
+      );
   }
+  
 }

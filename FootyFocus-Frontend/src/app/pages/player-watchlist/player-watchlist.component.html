@@ -1,27 +1,54 @@
 <div class="player-search-container">
   <h2>Search Players</h2>
   
-  <label for="league">Select League:</label>
-  <select id="league" [(ngModel)]="selectedLeague">
-    <option *ngFor="let league of leagues" [value]="league.code">{{ league.name }}</option>
-  </select>
+  <form (ngSubmit)="fetchPlayers()">
+    <div>
+      <label for="league">Select League:</label>
+      <select id="league" [(ngModel)]="selectedLeague" name="league" required>
+        <option *ngFor="let league of leagues" [value]="league.code">{{ league.name }}</option>
+      </select>
+    </div>
 
-  <label for="season">Select Season:</label>
-  <select id="season" [(ngModel)]="selectedSeason">
-    <option *ngFor="let season of seasons" [value]="season">{{ season }}</option>
-  </select>
+    <div>
+      <label for="season">Select Season:</label>
+      <select id="season" [(ngModel)]="selectedSeason" name="season" required>
+        <option *ngFor="let season of seasons" [value]="season">{{ season }}</option>
+      </select>
+    </div>
 
-  <label for="search">Search Query:</label>
-  <input id="search" [(ngModel)]="searchQuery" placeholder="Enter player name">
+    <div>
+      <label for="search">Search Query:</label>
+      <input id="search" [(ngModel)]="searchQuery" name="search" placeholder="Enter player name" required>
+    </div>
 
-  <button (click)="fetchPlayers()">Fetch Players</button>
+    <button type="submit">Fetch Players</button>
+  </form>
 
   <div *ngIf="players.length > 0">
-    <h3>Player Results:</h3>
-    <ul>
-      <li *ngFor="let player of players">
-        {{ player.firstName }} {{ player.lastName }} - {{ player.teamName }}
-      </li>
-    </ul>
+    <h3>Player Profiles:</h3>
+    <div class="player-profiles">
+      <div *ngFor="let player of players" class="player-profile">
+        <div class="profile-header">
+          <img [src]="player.photo" alt="{{ player.firstname }} {{ player.lastname }}" class="profile-photo">
+          <h4>{{ player.firstname }} {{ player.lastname }}</h4>
+          <p>Age: {{ player.age }}</p>
+          <p>Position: {{ player.position }}</p>
+        </div>
+        <div class="profile-body">
+          <p><strong>Team:</strong> {{ player.teamName }}</p>
+          <img [src]="player.teamLogo" alt="{{ player.teamName }} Logo" class="team-logo">
+          <p><strong>Height:</strong> {{ player.height }}</p>
+          <p><strong>Weight:</strong> {{ player.weight }}</p>
+          <p><strong>Birth Date:</strong> {{ player.birthDate }}</p>
+          <p><strong>Birth Place:</strong> {{ player.birthPlace }}</p>
+          <p><strong>Goals:</strong> {{ player.goals }}</p>
+          <p><strong>Assists:</strong> {{ player.assists }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="players.length === 0 && searchQuery">
+    <p>No players found for "{{ searchQuery }}" in the selected league and season.</p>
   </div>
 </div>

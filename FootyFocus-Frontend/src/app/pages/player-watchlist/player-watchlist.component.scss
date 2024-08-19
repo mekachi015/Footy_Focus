@@ -83,4 +83,85 @@
   .player-search-container h2 {
     font-size: 20px;
   }
+
+  .player-search-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+  }
+  
+  .player-profiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .player-profile {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .player-profile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .profile-header {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .profile-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 16px;
+    border: 2px solid #ddd;
+  }
+  
+  .profile-info {
+    flex: 1;
+  }
+  
+  .profile-info h4 {
+    margin: 0;
+    font-size: 1.25em;
+    color: #333;
+  }
+  
+  .profile-info p {
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  .profile-body {
+    padding: 16px;
+  }
+  
+  .team-logo {
+    width: 60px;
+    height: 60px;
+    margin-top: 8px;
+    border-radius: 4px;
+  }
+  
+  .profile-body p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 0.9em;
+  }
+  
 }
