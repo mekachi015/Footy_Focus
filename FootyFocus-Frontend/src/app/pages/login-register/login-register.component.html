@@ -1,126 +1,50 @@
-<!-- <div class="section">
-
-  <app-alert-modal [success]="successMessage" *ngIf="successMessage" (close)="successMessage = null"></app-alert-modal>
-
-  <div class="container">
-    <div class="row full-height justify-content-center">
-      <div class="col-12 text-center align-self-center py-5">
-        <div class="section pb-5 pt-5 pt-sm-2 text-center">
-                <input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
-                <label for="reg-log"></label>
-          <div class="card-3d-wrap mx-auto">
-            <div class="card-3d-wrapper">
-              <div class="card-front">
-                <div class="center-wrap">
-                  <div class="section text-center">
-                    <h4 class="mb-4 pb-3">Log In</h4>
-                    <div class="form-group">
-                      <input type="email" class="form-style" placeholder="Email">
-                      <i class="input-icon uil uil-at"></i>
-                    </div>	
-                    <div class="form-group mt-2">
-                      <input type="password" class="form-style" placeholder="Password">
-                      <i class="input-icon uil uil-lock-alt"></i>
-                    </div>
-                    <a href="#" class="btn mt-4" (click)="onLogin()">Login</a>
-                    <p class="mb-0 mt-4 text-center"><a href="https://www.web-leb.com/code" class="link">Forgot your password?</a></p>
-                      </div>
-                    </div>
-                  </div>
-              <div class="card-back">
-                <div class="center-wrap">
-                  <div class="section text-center">
-                    <h4 class="mb-3 pb-3">Sign Up</h4>
-                    <div class="form-group">
-                      <input type="text" class="form-style" placeholder="First Name" formControlName="firstName">
-                      <i class="input-icon uil uil-user"></i>
-                    </div>  
-                    <div class="form-group mt-2">
-                      <input type="text" class="form-style" placeholder="Last Name" formControlName="lastName">
-                      <i class="input-icon uil uil-user"></i>
-                    </div>
-                    <div class="form-group mt-2">
-                      <input type="email" class="form-style" placeholder="Email" formControlName="email">
-                      <i class="input-icon uil uil-at"></i>
-                    </div>
-                    <div class="form-group mt-2">
-                      <input type="password" class="form-style" placeholder="Password" formControlName="password">
-                      <i class="input-icon uil uil-lock-alt"></i>
-                    </div>
-                    <a href="#" class="btn mt-4" (click)="registerForm()">Register</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+<div class="form-container">
+  <div class="form-wrapper">
+    <!-- Form Switch -->
+    <div class="form-switch">
+      <button (click)="isRegisterMode = false" [class.active]="!isRegisterMode">Login</button>
+      <button (click)="isRegisterMode = true" [class.active]="isRegisterMode">Register</button>
     </div>
-</div> -->
 
-<div class="section">
+    <!-- Display success and error messages -->
+    <div class="alert" *ngIf="error || successMessage">
+      {{ error || successMessage }}
+    </div>
 
-  <app-alert-modal [success]="successMessage" *ngIf="successMessage" (close)="successMessage = null"></app-alert-modal>
-  
-  <div class="container">
-    <div class="row full-height justify-content-center">
-      <div class="col-12 text-center align-self-center py-5">
-        <div class="section pb-5 pt-5 pt-sm-2 text-center">
-          <input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
-          <label for="reg-log"></label>
-          <div class="card-3d-wrap mx-auto">
-            <div class="card-3d-wrapper">
-              <div class="card-front">
-                <div class="center-wrap">
-                  <div class="section text-center">
-                    <h4 class="mb-4 pb-3">Log In</h4>
-                    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-                      <div class="form-group">
-                        <input type="email" class="form-style" placeholder="Email" formControlName="email">
-                        <i class="input-icon uil uil-at"></i>
-                      </div>  
-                      <div class="form-group mt-2">
-                        <input type="password" class="form-style" placeholder="Password" formControlName="password">
-                        <i class="input-icon uil uil-lock-alt"></i>
-                      </div>
-                      <button type="submit" class="btn mt-4">Login</button>
-                    </form>
-                    <p class="mb-0 mt-4 text-center"><a href="#" class="link">Forgot your password?</a></p>
-                  </div>
-                </div>
-              </div>
-              <div class="card-back">
-                <div class="center-wrap">
-                  <div class="section text-center">
-                    <h4 class="mb-3 pb-3">Sign Up</h4>
-                    <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
-                      <div class="form-group">
-                        <input type="text" class="form-style" placeholder="First Name" formControlName="firstName">
-                        <i class="input-icon uil uil-user"></i>
-                      </div>  
-                      <div class="form-group mt-2">
-                        <input type="text" class="form-style" placeholder="Last Name" formControlName="lastName">
-                        <i class="input-icon uil uil-user"></i>
-                      </div>
-                      <div class="form-group mt-2">
-                        <input type="email" class="form-style" placeholder="Email" formControlName="email">
-                        <i class="input-icon uil uil-at"></i>
-                      </div>
-                      <div class="form-group mt-2">
-                        <input type="password" class="form-style" placeholder="Password" formControlName="password">
-                        <i class="input-icon uil uil-lock-alt"></i>
-                      </div>
-                      <button type="submit" class="btn mt-4">Register</button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <!-- Login Form -->
+    <form *ngIf="!isRegisterMode" [formGroup]="login" (ngSubmit)="signInForm()">
+      <h2>Login</h2>
+      <div class="form-group">
+        <input type="email" formControlName="email" placeholder="Email" (input)="onEmailInput()" />
+        <div *ngIf="login.get('email')?.invalid && login.get('email')?.touched">Invalid email</div>
       </div>
-    </div>
+      <div class="form-group">
+        <input type="password" formControlName="password" placeholder="Password" />
+        <div *ngIf="login.get('password')?.invalid && login.get('password')?.touched">Password is required</div>
+      </div>
+      <button type="submit" [disabled]="login.invalid">Login</button>
+    </form>
+
+    <!-- Registration Form -->
+    <form *ngIf="isRegisterMode" [formGroup]="register" (ngSubmit)="onRegister()">
+      <h2>Register</h2>
+      <div class="form-group">
+        <input type="text" formControlName="firstName" placeholder="First Name" />
+        <div *ngIf="register.get('firstName')?.invalid && register.get('firstName')?.touched">First Name is required</div>
+      </div>
+      <div class="form-group">
+        <input type="text" formControlName="lastName" placeholder="Last Name" />
+        <div *ngIf="register.get('lastName')?.invalid && register.get('lastName')?.touched">Last Name is required</div>
+      </div>
+      <div class="form-group">
+        <input type="email" formControlName="email" placeholder="Email" />
+        <div *ngIf="register.get('email')?.invalid && register.get('email')?.touched">Invalid email</div>
+      </div>
+      <div class="form-group">
+        <input type="password" formControlName="password" placeholder="Password" />
+        <div *ngIf="register.get('password')?.invalid && register.get('password')?.touched">Password is required</div>
+      </div>
+      <button type="submit" [disabled]="register.invalid">Register</button>
+    </form>
   </div>
 </div>
-
