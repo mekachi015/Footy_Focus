@@ -96,35 +96,41 @@ public class SearchPlayerService {
                     playerInfo.setTeamName((String) team.get("name"));
                     playerInfo.setTeamLogo((String) team.get("logo"));
 
-                    //playerInfo.setAppearances((Integer) games.get("appearances"));
                     playerInfo.setPosition((String) games.get("position"));
-                    playerInfo.setAppearances((int) games.get("appearances"));
-                    playerInfo.setCaptain((boolean) games.get("captain"));
+                    playerInfo.setAppearances(games.get("appearences") != null ? (int) games.get("appearences") : 0);
+                    playerInfo.setCaptain(games.get("captain") != null ? (boolean) games.get("captain") : false);
 
+                    playerInfo.setGoals(goals.get("total") != null ? (int) goals.get("total") : 0);
+                    playerInfo.setAssists(goals.get("assists") != null ? (int) goals.get("assists") : 0);
+                    playerInfo.setGoalsConceded(goals.get("conceded") != null ? (int) goals.get("conceded") : 0);
+                    playerInfo.setSaves(goals.get("saves") != null ? (int) goals.get("saves") : 0);
 
-                    playerInfo.setGoals((int) goals.get("total"));
-                    playerInfo.setAssists((int) goals.get("assists"));
-                    playerInfo.setGoalsConceded((int) goals.get("conceded"));
-                    playerInfo.setSaves((int) goals.get("saves"));
+                    playerInfo.setTotalPasses(passes.get("total") != null ? (int) passes.get("total") : 0);
+                    playerInfo.setKeyPasses(passes.get("key") != null ? (int) passes.get("key") : 0);
+                    playerInfo.setPassAccuracy(passes.get("accuracy") != null ? (int) passes.get("accuracy") : 0);
 
-                    playerInfo.setTotalPasses((int) passes.get("total"));
-                    playerInfo.setKeyPasses((int) passes.get("key"));
-                    playerInfo.setPassAccuracy((int) passes.get("accuracy"));
+                    playerInfo.setTotalTackles(tackles.get("total") != null ? (int) tackles.get("total") : 0);
+                    playerInfo.setBlocks(tackles.get("blocks") != null ? (int) tackles.get("blocks") : 0);
+                    playerInfo.setInterceptions(tackles.get("interceptions") != null ? (int) tackles.get("interceptions") : 0);
 
-                    playerInfo.setTotalTackles((int) tackles.get("total"));
-                    playerInfo.setBlocks((int) tackles.get("blocks"));
-                    playerInfo.setInterceptions((int) tackles.get("interceptions"));
+                    playerInfo.setTotalDuels(duels.get("total") != null ? (int) duels.get("total") : 0);
+                    playerInfo.setDuelsWon(duels.get("won") != null ? (int) duels.get("won") : 0);
 
-                    playerInfo.setTotalDuels((int) duels.get("total"));
-                    playerInfo.setDuelsWon((int) duels.get("won"));
+                    playerInfo.setDribbleAttempts(dribbles.get("attempts") != null ? (int) dribbles.get("attempts") : 0);
+                    playerInfo.setSuccessfulDribbles(dribbles.get("success") != null ? (int) dribbles.get("success") : 0);
 
-                    playerInfo.setDribbleAttempts((int) dribbles.get("attempts"));
-                    playerInfo.setSuccessfulDribbles((int) dribbles.get("success"));
+                    playerInfo.setFoulsDrawn(foul.get("drawn") != null ? (int) foul.get("drawn") : 0);
+                    playerInfo.setFoulsCommitted(foul.get("committed") != null ? (int) foul.get("committed") : 0);
 
-                    playerInfo.setFoulsDrawn((int) foul.get("drawn"));
-                    playerInfo.setFoulsCommitted((int) foul.get("commited"));
+                    playerInfo.setYellowCards(cards.get("yellow") != null ? (int) cards.get("yellow") : 0);
+                    playerInfo.setYellowRedCards(cards.get("yellowred") != null ? (int) cards.get("yellowred") : 0);
+                    playerInfo.setRedCards(cards.get("red") != null ? (int) cards.get("red") : 0);
 
-                    playerInfo.setYellowCards((int) cards.get("yellow"));
+                    playerInfo.setPenaltiesWon(penalty.get("won") != null ? (int) penalty.get("won") : 0);
+                    playerInfo.setPenaltiesCommitted(penalty.get("committed") != null ? (int) penalty.get("committed") : 0);
+                    playerInfo.setPenaltiesScored(penalty.get("scored") != null ? (int) penalty.get("scored") : 0);
+                    playerInfo.setPenaltiesMissed(penalty.get("missed") != null ? (int) penalty.get("missed") : 0);
+                    playerInfo.setPenaltiesSaved(penalty.get("saved") != null ? (int) penalty.get("saved") : 0);
 
                     playerInfoList.add(playerInfo);
                 }
