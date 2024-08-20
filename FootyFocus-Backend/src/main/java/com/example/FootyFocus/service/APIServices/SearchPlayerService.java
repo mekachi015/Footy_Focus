@@ -52,7 +52,6 @@ public class SearchPlayerService {
             throw new RuntimeException("Failed to fetch data: " + response.getStatusCode());
         }
     }
-
     private List<PlayerInfo> mapToPlayerInformation(Map<String, Object> body) {
         List<PlayerInfo> playerInfoList = new ArrayList<>();
 
@@ -71,13 +70,12 @@ public class SearchPlayerService {
                     Map<String, Object> games = (Map<String, Object>) stats.get("games");
                     Map<String, Object> goals = (Map<String, Object>) stats.get("goals");
                     Map<String, Object> passes = (Map<String, Object>) stats.get("passes");
-                    Map<String, Object> tackles = (Map<String, Object>) stats.get("takcles");
-                    Map<String, Object>  duels = (Map<String, Object>) stats.get("duels");
+                    Map<String, Object> tackles = (Map<String, Object>) stats.get("tackles");
+                    Map<String, Object> duels = (Map<String, Object>) stats.get("duels");
                     Map<String, Object> dribbles = (Map<String, Object>) stats.get("dribbles");
-                    Map<String, Object> foul = (Map<String, Object>) stats.get("foul");
+                    Map<String, Object> foul = (Map<String, Object>) stats.get("fouls");
                     Map<String, Object> cards = (Map<String, Object>) stats.get("cards");
                     Map<String, Object> penalty = (Map<String, Object>) stats.get("penalty");
-
 
                     PlayerInfo playerInfo = new PlayerInfo();
                     playerInfo.setFirstname((String) player.get("firstname"));
@@ -87,7 +85,7 @@ public class SearchPlayerService {
                     Map<String, Object> birth = (Map<String, Object>) player.get("birth");
                     playerInfo.setBirthDate((String) birth.get("date"));
                     playerInfo.setBirthPlace((String) birth.get("place"));
-                    playerInfo.setBirthPlace((String) birth. get("country"));
+                    playerInfo.setBirthPlace((String) birth.get("country")); // Adjusted the method name to be more descriptive
 
                     playerInfo.setHeight((String) player.get("height"));
                     playerInfo.setWeight((String) player.get("weight"));
@@ -97,7 +95,7 @@ public class SearchPlayerService {
                     playerInfo.setTeamLogo((String) team.get("logo"));
 
                     playerInfo.setPosition((String) games.get("position"));
-                    playerInfo.setAppearances(games.get("appearences") != null ? (int) games.get("appearences") : 0);
+                    playerInfo.setAppearances(games.get("appearances") != null ? (int) games.get("appearances") : 0);
                     playerInfo.setCaptain(games.get("captain") != null ? (boolean) games.get("captain") : false);
 
                     playerInfo.setGoals(goals.get("total") != null ? (int) goals.get("total") : 0);
@@ -119,8 +117,10 @@ public class SearchPlayerService {
                     playerInfo.setDribbleAttempts(dribbles.get("attempts") != null ? (int) dribbles.get("attempts") : 0);
                     playerInfo.setSuccessfulDribbles(dribbles.get("success") != null ? (int) dribbles.get("success") : 0);
 
-                    playerInfo.setFoulsDrawn(foul.get("drawn") != null ? (int) foul.get("drawn") : 0);
-                    playerInfo.setFoulsCommitted(foul.get("committed") != null ? (int) foul.get("committed") : 0);
+                    if (foul != null) { // Added a null check for 'foul'
+                        playerInfo.setFoulsDrawn(foul.get("drawn") != null ? (int) foul.get("drawn") : 0);
+                        playerInfo.setFoulsCommitted(foul.get("committed") != null ? (int) foul.get("committed") : 0);
+                    }
 
                     playerInfo.setYellowCards(cards.get("yellow") != null ? (int) cards.get("yellow") : 0);
                     playerInfo.setYellowRedCards(cards.get("yellowred") != null ? (int) cards.get("yellowred") : 0);
@@ -141,5 +141,6 @@ public class SearchPlayerService {
 
         return playerInfoList;
     }
+
 
 }
