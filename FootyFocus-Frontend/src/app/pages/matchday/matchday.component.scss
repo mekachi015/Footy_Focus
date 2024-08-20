@@ -1,4 +1,5 @@
 .container {
+
     display: flex;
     flex-direction: column;
     width: 100vw;
@@ -165,3 +166,135 @@
     align-items: center;
     justify-content: space-around;
   }
+
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 15px;
+}
+
+.competition-emblem {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+.competition-emblem img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.competition-emblem span {
+  font-size: 1.5em;
+  color: #333;
+  font-weight: 600;
+  align-items: center;
+
+}
+
+.filters select, 
+.filters input {
+  padding: 12px;
+  font-size: 1em;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  width: calc(33% - 10px);
+  background-color: #f8f8f8;
+}
+
+.filters button {
+  padding: 12px 20px;
+  font-size: 1em;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.filters button:hover {
+  background-color: #0056b3;
+}
+
+.match {
+  background-color: #fafafa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.match-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: 30%;
+  text-align: center;
+}
+
+.team-logo img {
+  width: 70px;
+  height: 70px;
+}
+
+.team-name {
+  font-size: 1em;
+  width: 2rem;
+  margin-top: 12px;
+  color: #222;
+}
+
+.match-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.match-date {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.match-score {
+  font-size: 2em;
+  font-weight: bold;
+  color: #333;
+}
+
+.match-score-divider {
+  margin: 0 12px;
+}
+
+.match-time-lapsed, 
+.match-referee {
+  font-size: 0.85em;
+  color: #888;
+}
+
