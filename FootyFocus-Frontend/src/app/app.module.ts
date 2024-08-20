@@ -14,6 +14,7 @@ import { PlayerWatchlistComponent } from './pages/player-watchlist/player-watchl
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatchdayComponent } from './pages/matchday/matchday.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { MatchdayComponent } from './pages/matchday/matchday.component';
     AlertModalComponent,
     PlayerWatchlistComponent,
     NavbarComponent,
-    MatchdayComponent
+    MatchdayComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,

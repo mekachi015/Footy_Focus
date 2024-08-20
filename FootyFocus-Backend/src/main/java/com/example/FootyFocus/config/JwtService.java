@@ -1,6 +1,5 @@
 package com.example.FootyFocus.config;
 
-
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
