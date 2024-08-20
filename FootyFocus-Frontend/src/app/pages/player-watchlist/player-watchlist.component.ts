@@ -44,13 +44,18 @@ export class PlayerWatchlistComponent implements OnInit {
     this.playerService.searchPlayers(this.searchQuery, this.selectedLeague, this.selectedSeason)
       .subscribe(
         (data: PlayerInfo[]) => {
-          this.players = data;
-          console.log(data);
+          this.players = data.map(player => ({
+            ...player,
+            showDetails: false
+          }));
+          console.log(this.players);
         },
         error => {
           console.error('Error fetching player data:', error);
         }
       );
   }
+
+  
   
 }

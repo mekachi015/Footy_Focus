@@ -24,31 +24,105 @@
     <button type="submit">Fetch Players</button>
   </form>
 
-  <div *ngIf="players.length > 0">
+  <div *ngIf="players.length > 0" class="player-results">
     <h3>Player Profiles:</h3>
     <div class="player-profiles">
       <div *ngFor="let player of players" class="player-profile">
         <div class="profile-header">
           <img [src]="player.photo" alt="{{ player.firstname }} {{ player.lastname }}" class="profile-photo">
           <h4>{{ player.firstname }} {{ player.lastname }}</h4>
-          <p>Age: {{ player.age }}</p>
-          <p>Position: {{ player.position }}</p>
+          <p class="player-meta">Age: {{ player.age }} | Position: {{ player.position }}</p>
+
+          <div class="favorite-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+              <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+            </svg>
+          </div>
+          
         </div>
         <div class="profile-body">
-          <p><strong>Team:</strong> {{ player.teamName }}</p>
-          <img [src]="player.teamLogo" alt="{{ player.teamName }} Logo" class="team-logo">
-          <p><strong>Height:</strong> {{ player.height }}</p>
-          <p><strong>Weight:</strong> {{ player.weight }}</p>
-          <p><strong>Birth Date:</strong> {{ player.birthDate }}</p>
-          <p><strong>Birth Place:</strong> {{ player.birthPlace }}</p>
-          <p><strong>Goals:</strong> {{ player.goals }}</p>
-          <p><strong>Assists:</strong> {{ player.assists }}</p>
+          <div class="team-info">
+            <p><strong>Team:</strong> {{ player.teamName }}</p>
+            <img [src]="player.teamLogo" alt="{{ player.teamName }} Logo" class="team-logo">
+          </div>
+        
+          <div class="player-details">
+            <div class="detail-group">
+              <h5>Personal Info</h5>
+              <p><strong>Height:</strong> {{ player.height }}</p>
+              <p><strong>Weight:</strong> {{ player.weight }}</p>
+              <p><strong>Birth Date:</strong> {{ player.birthDate }}</p>
+              <p><strong>Birth Place:</strong> {{ player.birthPlace }}</p>
+              <p><strong>Injury Status:</strong> {{ player.injured }}</p>
+              <p><strong>Shots on Target:</strong> {{ player.shotsOnTarget }}</p>
+              <p><strong>Capatain:</strong> {{ player.captain }}</p>
+            </div>
+          </div>
+
+          <!-- <button (click)="player.showDetails = !player.showDetails" class="view-more-btn">
+            {{ player.showDetails ? 'View Less' : 'View More' }}
+          </button> -->
+
+          <!-- <div *ngIf="player.showDetails" class="additional-details"> -->
+            <div class="detail-group">
+              <h5>Offensive Stats</h5>
+              <p><strong>Goals:</strong> {{ player.goals }}</p>
+              <p><strong>Assists:</strong> {{ player.assists }}</p>
+              <p><strong>Total Shots:</strong> {{ player.totalShots }}</p>
+              <p><strong>Shots on Target:</strong> {{ player.shotsOnTarget }}</p>
+              <p><strong>Nunber of saves:</strong> {{ player.saves }}</p>
+            </div>
+
+            <!-- Include the rest of the detail groups here -->
+            <div class="detail-group">
+              <h5>Passing Stats</h5>
+              <p><strong>Total Passes:</strong> {{ player.totalPasses }}</p>
+              <p><strong>Key Passes:</strong> {{ player.keyPasses }}</p>
+              <p><strong>Passing Accuracy:</strong> {{ player.passAccuracy }}</p>
+            </div>
+
+            <div class="detail-group">
+              <h5>Defensive Stats</h5>
+              <p><strong>Total Tackles:</strong> {{ player.totalTackles }}</p>
+              <p><strong>Blocks:</strong> {{ player.blocks }}</p>
+              <p><strong>Interceptions:</strong> {{ player.interceptions }}</p>
+            </div>
+
+            <div class="detail-group">
+              <h5>Dribbling Stats</h5>
+              <p><strong>Dribble Attempts:</strong> {{ player.dribbleAttempts }}</p>
+              <p><strong>Successful Dribbles:</strong> {{ player.successfulDribbles }}</p>
+            </div>
+
+            <div class="detail-group">
+              <h5>Foul Stats</h5>
+              <p><strong>Fouls Drawn:</strong> {{ player.foulsDrawn }}</p>
+              <p><strong>Fouls Committed:</strong> {{ player.foulsCommited }}</p>
+            </div>
+
+            <div class="detail-group">
+              <h5>Cards Stats</h5>
+              <p><strong>Yellow Cards:</strong> {{ player.yellow }}</p>
+              <p><strong>Yellow/Red:</strong> {{ player.yellowRedCard }}</p>
+              <p><strong>Red:</strong> {{ player.red }}</p>
+            </div>
+
+            <div class="detail-group">
+              <h5>Penalty Stats</h5>
+              <p><strong>Penalties Won:</strong> {{ player.penaltiesWon }}</p>
+              <p><strong>Penalties Committed:</strong> {{ player.penaltiesCommited }}</p>
+              <p><strong>Penaties Scored:</strong> {{ player.penaltiesScored }}</p>
+              <p><strong>Penaties Missed:</strong> {{ player.penaltiesMissed }}</p>
+              <p><strong>Penaties Saved:</strong> {{ player.penaltiesSaved }}</p>
+            </div>
+          </div>
+
+          
         </div>
       </div>
     </div>
   </div>
 
-  <div *ngIf="players.length === 0 && searchQuery">
+  <div *ngIf="players.length === 0 && searchQuery" class="no-results">
     <p>No players found for "{{ searchQuery }}" in the selected league and season.</p>
   </div>
-</div>
