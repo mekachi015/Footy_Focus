@@ -25,4 +25,9 @@ public class PlayerInfoController {
             @RequestParam int season) {
         return searchPlayerService.fetchPlayerInfoFromApi(search, league, season);
     }
+
+    @PostMapping
+    public void addPlayerToFavorites(@RequestParam String search, @RequestParam int league, @RequestParam int season) {
+        searchPlayerService.savePlayerToFavorites(search, league, season);
+    }
 }

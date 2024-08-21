@@ -1,6 +1,8 @@
 package com.example.FootyFocus.service.APIServices;
 
 import com.example.FootyFocus.entity.PlayerInfo;
+import com.example.FootyFocus.repository.PlayerInfoRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -18,6 +20,9 @@ public class SearchPlayerService {
 
     private static final String API_URL = "https://v3.football.api-sports.io/";
     private static final String API_TOKEN = "fc335a35da3e025cf91907aa4ce82245";
+
+    @Autowired
+    private PlayerInfoRepo playerInfoRepository;
 
     public List<PlayerInfo> fetchPlayerInfoFromApi(String search, int league, int season) {
 
@@ -142,5 +147,25 @@ public class SearchPlayerService {
         return playerInfoList;
     }
 
+//    public PlayerInfo savePlayerToFavorites(PlayerInfo playerInfo) {
+//        return playerInfoRepository.save(playerInfo);
+//    }
+
+    public void savePlayerToFavorites(String search, int league, int season) {
+        // Fetch the player information from the API
+        List<PlayerInfo> playerInfos = fetchPlayerInfoFromApi(search, league, season);
+
+        if (playerInfos != null && !playerInfos.isEmpty()) {
+            // Save each player info to the database
+            for (PlayerInfo playerInfo : playerInfos) {
+                // Check if the player already exists in the database to avoid duplicates
+                if (!playerInfoRepository.existsById(playerInfo.getId())) {
+                    playerInfoRepository.save(playerInfo);
+                }
+            }
+        } else {
+            throw new RuntimeException("No player information found for the search criteria.");
+        }
+    }
 
 }
