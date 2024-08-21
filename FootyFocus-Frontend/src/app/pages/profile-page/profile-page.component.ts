@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Profile } from 'src/app/models/Profile';
 import { AuthService } from 'src/app/services/auth service/auth.service';
+import { ProfileService } from 'src/app/services/Profile service/profile.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -10,22 +13,37 @@ export class ProfilePageComponent implements OnInit{
 
   user: any = {};  // Initialize user object
   isEditing = false;
-
-  constructor(private authService: AuthService) {}
+  userProfile: Profile | undefined;
+  userId: number | null = null; // Initialize userId as number or null
+  constructor(private authService: AuthService,
+    private profile: ProfileService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.loadUserInfo();
+
+    this.userId = this.authService.getUserId();
+
+    this.loadUserProfile()
   }
 
-  loadUserInfo(): void {
-    this.authService.getUserProfile().subscribe({
-      next: (userData) => {
-        this.user = userData;  // Update user information with data from the service
-      },
-      error: (err) => {
-        console.error('Error fetching user info', err);
-      }
-    });
+  loadUserProfile() {
+    if (this.userId !== null) {
+      this.profile.getUserProfile(this.userId).subscribe(
+        (profile: Profile) => {
+          this.userProfile = profile;
+        },
+        (error) => {
+          console.error('Error fetching user profile:', error);
+        }
+      );
+    }
+  }
+
+  logout(): void {
+    this.authService.logout();
+    window.alert("Logout succesful");
+    this.router.navigate(["/login"]);
   }
 
   toggleEdit(): void {
@@ -47,7 +65,7 @@ export class ProfilePageComponent implements OnInit{
       next: (response) => {
         console.log('Profile updated successfully', response);
         this.isEditing = false;
-        this.loadUserInfo();  // Reload user info after successful update
+        this.loadUserProfile();  // Reload user info after successful update
       },
       error: (err) => {
         console.error('Error updating profile', err);

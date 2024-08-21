@@ -62,7 +62,7 @@ import { RegisterRequest } from 'src/app/models/RegisterRequest';
     }
   
     getLoggedInUserEmail(): string {
-      return localStorage.getItem('loggedInUserEmail') || '';
+      return localStorage.getItem('loggedInUserEmail') || this.loggedInEmail;
     }
   
     initAuth(): void {
