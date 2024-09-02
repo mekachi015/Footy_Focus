@@ -8,6 +8,8 @@ export interface Match {
     compEmblem: string;
     utcDate: string;
     homeTeamName: string;
+    homeTeamShortName: string;
+    awayTeamShortName: string;
     homeTeamCrest: string;
     awayTeamName: string;
     awayTeamCrest: string;

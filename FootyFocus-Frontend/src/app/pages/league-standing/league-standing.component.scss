@@ -149,4 +149,33 @@ button:hover {
       width: 30px; /* Fixed width for team position */
       text-align: center;
     }
+
+    .team-photo-container {
+      display: inline-block;
+      cursor: pointer;
+    }
+    
+    .teamCrest {
+      max-width: 50px;
+      height: auto;
+    }
+    .team-form svg {
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+    
+    .team-form {
+      margin-top: 10px;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 14px;
+      text-align: center;
+    }
+    
 }
+
+    
+    
+

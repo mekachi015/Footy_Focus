@@ -11,7 +11,7 @@ export class LeagueStandingComponent implements OnInit {
 
 
   leagueStandings: LeagueStandings[] = [];
-
+  clickedTeam: string | null = null;  // Track the clicked team
 
   constructor(private leagueService: LeagueStandingsService) {}
 
@@ -25,27 +25,22 @@ export class LeagueStandingComponent implements OnInit {
   ];
   
   seasonYear: number[] = [2020, 2021, 2022, 2023];
-
-  // selectedSeasonYear: number = new Date().getFullYear(); //default to the current year
-  selectedSeasonYear: number = 2023; //default to the current year
-  selectedLeagueCode: string = 'PL';  // setting default to premier league
-
+  selectedSeasonYear: number = 2023; // Default to the current year
+  selectedLeagueCode: string = 'PL';  // Default to Premier League
 
   ngOnInit(): void {
-    
     this.fetchStandings();
   }
 
-  fetchStandings(): void{
+  fetchStandings(): void {
     this.leagueService.getLeagueStanding(this.selectedLeagueCode, this.selectedSeasonYear).subscribe(
       (data: LeagueStandings[]) => {
         this.leagueStandings = data;
       },
-
-      (error) =>{
-        console.error('Error fetching league standings')
+      (error) => {
+        console.error('Error fetching league standings', error);
       }
-    )
+    );
   }
 
   getLimitedStandings(): LeagueStandings[] {
@@ -64,7 +59,11 @@ export class LeagueStandingComponent implements OnInit {
     return Array.from(uniqueTeams.values());
   }
 
-  //Ligue1 - 18
-  //bundesliga - 18
-  // eredivisie - 
+  onTeamClick(teamName: string): void {
+    this.clickedTeam = this.clickedTeam === teamName ? null : teamName; // Toggle visibility
+  }
+
+  
+  
+
 }

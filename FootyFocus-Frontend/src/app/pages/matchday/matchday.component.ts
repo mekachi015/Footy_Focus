@@ -26,6 +26,7 @@ export class MatchdayComponent implements OnInit {
 
   selectedLeague = 'SA';
   selectedSeason = '2023';
+  selectedMatchDay  = '1';
   matchday: number | undefined;
   matches: any[] = [];
   error: string | null = null;

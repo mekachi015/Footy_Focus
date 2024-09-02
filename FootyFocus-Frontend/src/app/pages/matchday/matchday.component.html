@@ -20,6 +20,7 @@
     />
     <button (click)="fetchMatches()">Fetch Matches</button>
   </div>
+  
 
   <div *ngIf="error" class="error">{{ error }}</div>
 
@@ -30,81 +31,70 @@
   </div>
 
   <!-- Matches Display -->
-  <div *ngFor="let match of matches" class="match">
-    <div class="match-content">
-      <div class="column">
-        <div class="team team--home">
-          <div class="team-logo">
-            <img [src]="match.homeTeamCrest" [alt]="match.homeTeamName" />
-          </div>
-          <h2 class="team-name">{{ match.homeTeamName }}</h2>
+  <!-- <div *ngFor="let match of matches" class="match">
+    <div class="head-to-head-card">
+      <div class="team team--home">
+        <div class="team-logo">
+          <img [src]="match.homeTeamCrest" [alt]="match.homeTeamName" />
+        </div>
+        <h2 class="home-team-name">{{ match.homeTeamShortName }}</h2>
+      </div>
+      <div class="match-details">
+        <div class="match-date">
+          {{ match.utcDate | date: 'd MMM yyyy, h:mm a' }}
+        </div>
+        <div class="match-score">
+          <span class="match-score-number match-score-number--leading">{{ match.homeFullScore }}</span>
+          <span class="match-score-divider">:</span>
+          <span class="match-score-number">{{ match.awayFullScore }}</span>
+        </div>
+        <div class="match-time-lapsed">
+          {{ match.homeHalfScore }}' - {{ match.awayHalfScore }}'
+        </div>
+        <div class="match-referee">
+          Referee: <strong>{{ match.refName }}</strong>
         </div>
       </div>
-      <div class="column">
-        <div class="match-details">
-          <div class="match-date">
-            {{ match.utcDate | date: 'd MMM yyyy, h:mm a' }}
-
-    <div class="filters">
-      <select [(ngModel)]="selectedLeague" (change)="fetchMatches()">
-        <option *ngFor="let league of leagueCodes" [value]="league.code">
-          {{ league.name }}
-        </option>
-      </select>
-      <select [(ngModel)]="selectedSeason" (change)="fetchMatches()">
-        <option *ngFor="let year of seasonYear" [value]="year">
-          {{ year }}
-        </option>
-      </select>
-      <input
-        type="number"
-        [(ngModel)]="matchday"
-        min="1"
-        max="38"
-        placeholder="Matchday"
-      />
-      <button (click)="fetchMatches()">Fetch Matches</button>
-
-      <div class="competition-emblem" *ngIf="matches.length > 0">
-        <img [src]="matches[0].compEmblem" [alt]="matches[0].compName" />
-        <span>{{ matches[0].compName }}</span>
+      <div class="team team--away">
+        <div class="team-logo">
+          <img [src]="match.awayTeamCrest" [alt]="match.awayTeamName" />
+        </div>
+        <h2 class="away-team-name">{{ match.awayTeamShortName }}</h2>
       </div>
     </div>
-  
-    <div *ngIf="error" class="error">{{ error }}</div>
-  
-    <div *ngFor="let match of matches" class="match">
-      
-      <div class="match-content">
-        <div class="column">
-          <div class="team team--home">
-            <div class="team-logo">
-              <img [src]="match.homeTeamCrest" [alt]="match.homeTeamName" />
-            </div>
-            <h2 class="team-name">{{ match.homeTeamName }}</h2>
+  </div> -->
 
-          </div>
-          <div class="match-score">
-            <span class="match-score-number match-score-number--leading">{{ match.homeFullScore }}</span>
-            <span class="match-score-divider">:</span>
-            <span class="match-score-number">{{ match.awayFullScore }}</span>
-          </div>
-          <div class="match-time-lapsed">
-            {{ match.homeHalfScore }}' - {{ match.awayHalfScore }}'
-          </div>
-          <div class="match-referee">
-            Referee: <strong>{{match.refName}}</strong>
-          </div>
-        </div>
+  <div class="matches" *ngFor="let match of matches">
+
+    <div class="head-to-head">
+
+
+      <div class="match-date">
+        {{ match.utcDate | date: 'd MMM yyyy, h:mm a' }}
       </div>
-      <div class="column">
-        <div class="team team--away">
-          <div class="team-logo">
-            <img [src]="match.awayTeamCrest" [alt]="match.awayTeamName" />
-          </div>
-          <h2 class="team-name">{{ match.awayTeamName }}</h2>
-        </div>
+
+      <div class="team-logos">
+        <img [src]="match.homeTeamCrest" [alt]="match.homeTeamName" />
+        <img [src]="match.awayTeamCrest" [alt]="match.awayTeamName" />
       </div>
+
+      <div class="home-team-name">
+        <h2 class="home-team-name">{{ match.homeTeamShortName }}</h2>
+        <span class="vs">vs</span>
+        <h2 class="away-team-name">{{match.awayTeamShortName}}</h2>
+      </div>
+
+      <div class="match-score">
+        <span class="match-score-number match-score-number--leading">{{ match.homeFullScore }}</span>
+        <span class="match-score-divider">--</span>
+        <span class="match-score-number">{{ match.awayFullScore }}</span>
+      </div>
+
+      <div class="match-referee">
+        Referee: <strong>{{ match.refName }}</strong>
+      </div>
+
     </div>
   </div>
+  
 </div>
