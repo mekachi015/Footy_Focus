@@ -37,10 +37,12 @@ public class Matches {
     //from home team
     private String homeTeamName;
     private String homeTeamCrest;
+    private String homeTeamShortName;
 
     //from away team
     private String awayTeamName;
     private String awayTeamCrest;
+    private String awayTeamShortName;
 
     //from score
     private int homeFullScore;

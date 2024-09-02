@@ -63,11 +63,13 @@ public class MatchesApiService {
             // Extract home team details
             Map<String, Object> homeTeamMap = (Map<String, Object>) homeTeam;
             matchInfo.setHomeTeamName((String) homeTeamMap.get("name"));
+            matchInfo.setHomeTeamShortName((String) homeTeamMap.get("shortName"));
             matchInfo.setHomeTeamCrest((String) homeTeamMap.get("crest"));
 
             // Extract away team details
             Map<String, Object> awayTeamMap = (Map<String, Object>) awayTeam;
             matchInfo.setAwayTeamName((String) awayTeamMap.get("name"));
+            matchInfo.setAwayTeamShortName((String) awayTeamMap.get("shortName"));
             matchInfo.setAwayTeamCrest((String) awayTeamMap.get("crest"));
 
             // Extract scores
