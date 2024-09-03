@@ -35,53 +35,7 @@ export class MatchdayComponent implements OnInit {
     // this.fetchMatches();
   }
 
-  // fetchMatches(): void {
-  //   this.loading = true;
-  //   this.error = undefined;
-
-  //   this.matchdayService.getMatches(this.selectedLeague, this.matchday, this.selectedYear).subscribe(
-  //     (data: Matches[]) => {
-  //       this.matches = data;
-  //       this.loading = false;
-  //     },
-  //     (error) => {
-  //       console.error('Error fetching matches for matchday', error);
-  //       this.error = 'Failed to fetch matches. Please try again later.';
-  //       this.loading = false;
-  //     }
-  //   );
-  // }
-
-  // onLeagueChange(event: Event): void {
-  //   const target = event.target as HTMLSelectElement;
-  //   this.selectedLeague = target.value;
-  //   this.fetchMatches();
-  // }
-
-  // onYearChange(event: Event): void {
-  //   const target = event.target as HTMLSelectElement;
-  //   this.selectedYear = +target.value; // Convert to number
-  //   this.fetchMatches();
-  // }
-
-  // fetchMatches() {
-  //   if (this.matchday && this.matchday >= 1 && this.matchday <= 38) {
-  //     this.matchdayService.getMatches(this.selectedLeague, this.selectedSeason, this.matchday)
-  //       .subscribe({
-  //         next: (data) => {
-  //           this.matches = data;
-  //           this.error = null;
-          
-  //         },
-  //         error: (err) => {
-  //           this.error = 'An error occurred while fetching matches.';
-  //           this.matches = [];
-  //         }
-  //       });
-  //   } else {
-  //     this.error = 'Please enter a matchday between 1 and 38.';
-  //   }
-  // }
+  public today: Date = new Date();
 
   fetchMatches() {
     if (this.matchday && this.matchday >= 1 && this.matchday <= 38) {
