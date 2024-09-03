@@ -1,50 +1,56 @@
-<div class="form-container">
-  <div class="form-wrapper">
-    <!-- Form Switch -->
-    <div class="form-switch">
-      <button (click)="isRegisterMode = false" [class.active]="!isRegisterMode">Login</button>
-      <button (click)="isRegisterMode = true" [class.active]="isRegisterMode">Register</button>
+<div class="login-register-container">
+  <!-- Toggle between Login and Register forms -->
+  <h2>{{ isRegisterMode ? 'Register' : 'Login' }}</h2>
+
+  <!-- Success or error messages -->
+  <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+  <div *ngIf="error" class="error-message">{{ error }}</div>
+
+  <!-- Login Form -->
+  <form *ngIf="!isRegisterMode" [formGroup]="login" (ngSubmit)="signInForm()">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input formControlName="email" id="email" type="email" (input)="onEmailInput()" required />
     </div>
-
-    <!-- Display success and error messages -->
-    <div class="alert" *ngIf="error || successMessage">
-      {{ error || successMessage }}
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input formControlName="password" id="password" type="password" required />
     </div>
+    <button type="submit" [disabled]="login.invalid">Login</button>
 
-    <!-- Login Form -->
-    <form *ngIf="!isRegisterMode" [formGroup]="login" (ngSubmit)="signInForm()">
-      <h2>Login</h2>
-      <div class="form-group">
-        <input type="email" formControlName="email" placeholder="Email" (input)="onEmailInput()" />
-        <div *ngIf="login.get('email')?.invalid && login.get('email')?.touched">Invalid email</div>
-      </div>
-      <div class="form-group">
-        <input type="password" formControlName="password" placeholder="Password" />
-        <div *ngIf="login.get('password')?.invalid && login.get('password')?.touched">Password is required</div>
-      </div>
-      <button type="submit" [disabled]="login.invalid">Login</button>
-    </form>
+    <!-- Link to switch to Registration form -->
+    <p class="switch-link">
+      Don't have an account? <a (click)="toggleForm()">Click here to register</a>
+    </p>
+    <!-- Forgot Password link -->
+    <p class="forgot-password">
+      <a routerLink="/forgot-password">Forgot your password?</a>
+    </p>
+  </form>
 
-    <!-- Registration Form -->
-    <form *ngIf="isRegisterMode" [formGroup]="register" (ngSubmit)="onRegister()">
-      <h2>Register</h2>
-      <div class="form-group">
-        <input type="text" formControlName="firstName" placeholder="First Name" />
-        <div *ngIf="register.get('firstName')?.invalid && register.get('firstName')?.touched">First Name is required</div>
-      </div>
-      <div class="form-group">
-        <input type="text" formControlName="lastName" placeholder="Last Name" />
-        <div *ngIf="register.get('lastName')?.invalid && register.get('lastName')?.touched">Last Name is required</div>
-      </div>
-      <div class="form-group">
-        <input type="email" formControlName="email" placeholder="Email" />
-        <div *ngIf="register.get('email')?.invalid && register.get('email')?.touched">Invalid email</div>
-      </div>
-      <div class="form-group">
-        <input type="password" formControlName="password" placeholder="Password" />
-        <div *ngIf="register.get('password')?.invalid && register.get('password')?.touched">Password is required</div>
-      </div>
-      <button type="submit" [disabled]="register.invalid">Register</button>
-    </form>
-  </div>
+  <!-- Register Form -->
+  <form *ngIf="isRegisterMode" [formGroup]="register" (ngSubmit)="onRegister()">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input formControlName="firstName" id="firstName" type="text" required />
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input formControlName="lastName" id="lastName" type="text" required />
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input formControlName="email" id="email" type="email" required />
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input formControlName="password" id="password" type="password" required />
+    </div>
+    <button type="submit" [disabled]="register.invalid">Register</button>
+
+    <!-- Link to switch to Login form -->
+    <p class="switch-link">
+      Already have an account? <a (click)="toggleForm()">Click here to login</a>
+    </p>
+  </form>
 </div>

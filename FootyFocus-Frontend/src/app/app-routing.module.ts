@@ -7,14 +7,15 @@ import { PlayerWatchlistComponent } from './pages/player-watchlist/player-watchl
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatchdayComponent } from './pages/matchday/matchday.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { AuthGuard } from './services/auth gaurd/auth-gaurd';
 
 const routes: Routes = [
   {path: 'player', component:PlayerPageComponent},
-  {path: 'league-standings', component:LeagueStandingComponent},
+  {path: 'league-standings', component:LeagueStandingComponent, canActivate: [AuthGuard] },
   {path: 'login', component:LoginRegisterComponent},
-  {path: 'player-wishlist', component: PlayerWatchlistComponent},
+  {path: 'player-wishlist', component: PlayerWatchlistComponent, canActivate: [AuthGuard] },
   {path: 'matchday', component: MatchdayComponent},
-  {path: 'profile', component:ProfilePageComponent}
+  {path: 'profile', component:ProfilePageComponent, canActivate: [AuthGuard] }
  
 ];
 

@@ -94,18 +94,61 @@ export class LoginRegisterComponent implements OnInit {
       );
   }
 
-  // Function called when user submits the registration form
+  // // Function called when user submits the registration form
+  // onRegister(): void {
+  //   this.http.post("http://localhost:8080/api/v1/auth/register", this.register.value)
+  //     .subscribe(
+  //       () => {
+  //         this.successMessage = "Registration successful. Redirecting to matchday...";
+  //         this.error = null;
+  //         setTimeout(() => {
+  //           this.successMessage = null;
+  //           this.isRegisterMode = false; // Switch back to login form
+  //           this.router.navigate(["/matchday"]);
+  //         }, 3000); // 3 seconds delay before clearing success message
+  //       },
+  //       (error: HttpErrorResponse) => {
+  //         if (error.status === 400) {
+  //           this.error = 'Invalid registration details. Please check your input.';
+  //         } else {
+  //           this.error = 'Something went wrong. Please try again later.';
+  //         }
+  //       }
+  //     );
+  // }
+
   onRegister(): void {
-    this.http.post("http://localhost:8080/api/v1/auth/register", this.register.value)
+    this.http.post<{ token: string }>("http://localhost:8080/api/v1/auth/register", this.register.value)
       .subscribe(
         () => {
-          this.successMessage = "Registration successful. Please log in.";
-          this.error = null;
-          setTimeout(() => {
-            this.successMessage = null;
-            this.isRegisterMode = false; // Switch back to login form
-            this.router.navigate(["/matchday"]);
-          }, 3000); // 3 seconds delay before clearing success message
+          // On successful registration, log the user in automatically
+          const loginData = {
+            email: this.register.value.email,
+            password: this.register.value.password
+          };
+  
+          this.http.post<{ token: string }>("http://localhost:8080/api/v1/auth/authenticate", loginData)
+            .subscribe(
+              resp => {
+                const token = resp.token;
+                if (token) {
+                  this.token = token;
+                  this.userEmail = this.register.value.email;
+                  localStorage.setItem("token", token);
+                  this.userLoggedIn = true;
+                  this.error = null;
+                  this.successMessage = "Registration successful. You are now logged in."; 
+                  setTimeout(() => {
+                    this.successMessage = null;
+                    this.router.navigate(["/matchday"]);
+                    this.authService.login(this.userEmail, token);
+                  }, 1000); 
+                }
+              },
+              (error: HttpErrorResponse) => {
+                this.error = 'Login failed after registration. Please try logging in manually.';
+              }
+            );
         },
         (error: HttpErrorResponse) => {
           if (error.status === 400) {
@@ -116,6 +159,7 @@ export class LoginRegisterComponent implements OnInit {
         }
       );
   }
+  
 
   // Function to switch between login and registration forms
   toggleForm(): void {
