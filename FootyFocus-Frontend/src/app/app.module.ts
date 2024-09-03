@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatchdayComponent } from './pages/matchday/matchday.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { CoolFormComponent } from './components/cool-form/cool-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     PlayerWatchlistComponent,
     NavbarComponent,
     MatchdayComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    CoolFormComponent
   ],
   imports: [
     BrowserModule,
