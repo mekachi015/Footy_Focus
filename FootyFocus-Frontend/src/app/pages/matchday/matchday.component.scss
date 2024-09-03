@@ -26,6 +26,7 @@
 
 .current-datetime{
   position: relative;
+  width: 230px;
 
   left: 10rem;
   bottom: 2.7rem;
@@ -59,6 +60,17 @@
   background-color: #f9f9f9;
 }
 
+.select-section{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  button{
+    height: 2rem;
+    width: 8rem;
+    align-content: center;
+  }
+}
 .team-logos {
   display: flex;
   flex-direction: column;

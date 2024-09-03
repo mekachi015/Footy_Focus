@@ -39,9 +39,11 @@
   <div *ngIf="error" class="error">{{ error }}</div>
 
   <!-- Competition Emblem and Name Display -->
-  <div *ngIf="matches.length > 0" class="competition-info">
-    <img [src]="matches[0].compEmblem" [alt]="matches[0].compName" class="competition-emblem"/>
-    <h2 class="competition-name">{{ matches[0].compName }}</h2>
+  <div class="select-section">
+   
+    <button>Previous Games</button>
+
+    <button>Upcoming Games</button>
   </div>
 
 
