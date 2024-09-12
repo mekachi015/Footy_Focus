@@ -8,6 +8,7 @@
     <p><strong>Last Name:</strong> {{ user.lastname }}</p>
     <p><strong>Email:</strong> {{ user.email }}</p>
     <p><strong>Bio:</strong> {{ user.bio || 'No bio available' }}</p>
+    <p><strong>Favorite Team:</strong> {{ user.favTeam }}</p>
     <button (click)="toggleEdit()" class="edit-btn">Edit Profile</button>
     <button class="edit-btn" (click)="logout()">Logout</button>
   </div>
@@ -30,7 +31,12 @@
 
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" id="email" [ngModel]="user.email" name="email" disabled>
+      <input type="email" id="email" [(ngModel)]="user.email" name="email" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="team">Team:</label>
+      <input type="text" id="team" [(ngModel)]="user.favTeam" name="team" required>
     </div>
 
     <div class="form-group">
@@ -39,7 +45,8 @@
     </div>
 
     <div class="button-group">
-      <button type="submit" class="save-btn">Save Changes</button>
+      <button type="button" (click)="saveProfile()">Save</button>
+
       <button type="button" (click)="toggleEdit()" class="cancel-btn">Cancel</button>
     </div>
   </form>

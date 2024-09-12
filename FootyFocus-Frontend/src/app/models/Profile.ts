@@ -4,4 +4,6 @@ export interface Profile {
     lastname: string;
     email: string;
     password?: string; // Optional or use if updating the password
+    bio:string;
+    favTeam: string;
 }
