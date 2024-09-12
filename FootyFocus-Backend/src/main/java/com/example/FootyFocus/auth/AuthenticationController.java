@@ -53,5 +53,17 @@ public class AuthenticationController {
         }
     }
 
+    @GetMapping("/user/email/{email}")
+    public ResponseEntity<com.example.FootyFocus.user.User> getUserByEmail(
+            @PathVariable String email) {
+        Optional<com.example.FootyFocus.user.User> email1 = userRepo.findByEmail(email);
+        if (email1.isPresent()) {
+            return ResponseEntity.ok(email1.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
 
 }
