@@ -1,4 +1,4 @@
-<div class="login-register-container">
+<div class="login-register-container classic-blue">
   <!-- Toggle between Login and Register forms -->
   <h2>{{ isRegisterMode ? 'Register' : 'Login' }}</h2>
 
@@ -7,7 +7,7 @@
   <div *ngIf="error" class="error-message">{{ error }}</div>
 
   <!-- Login Form -->
-  <form *ngIf="!isRegisterMode" [formGroup]="login" (ngSubmit)="signInForm()">
+  <form *ngIf="!isRegisterMode" [formGroup]="login" (ngSubmit)="signInForm()" class="auth-form">
     <div class="form-group">
       <label for="email">Email</label>
       <input formControlName="email" id="email" type="email" (input)="onEmailInput()" required />
@@ -16,7 +16,7 @@
       <label for="password">Password</label>
       <input formControlName="password" id="password" type="password" required />
     </div>
-    <button type="submit" [disabled]="login.invalid">Login</button>
+    <button type="submit" [disabled]="login.invalid" class="auth-btn">Login</button>
 
     <!-- Link to switch to Registration form -->
     <p class="switch-link">
@@ -29,7 +29,7 @@
   </form>
 
   <!-- Register Form -->
-  <form *ngIf="isRegisterMode" [formGroup]="register" (ngSubmit)="onRegister()">
+  <form *ngIf="isRegisterMode" [formGroup]="register" (ngSubmit)="onRegister()" class="auth-form">
     <div class="form-group">
       <label for="firstName">First Name</label>
       <input formControlName="firstName" id="firstName" type="text" required />
@@ -46,7 +46,7 @@
       <label for="password">Password</label>
       <input formControlName="password" id="password" type="password" required />
     </div>
-    <button type="submit" [disabled]="register.invalid">Register</button>
+    <button type="submit" [disabled]="register.invalid" class="auth-btn">Register</button>
 
     <!-- Link to switch to Login form -->
     <p class="switch-link">

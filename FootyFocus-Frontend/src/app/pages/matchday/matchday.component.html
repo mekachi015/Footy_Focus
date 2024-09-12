@@ -1,5 +1,4 @@
-<div class="container">
-
+<div class="container classic-blue">
   <div class="filters-container">
     <h2 class="filters-heading">Matchday</h2>
 
@@ -8,28 +7,29 @@
     </div>
 
     <div class="divider"></div>
-    
+
     <div class="filters">
-      <select [(ngModel)]="selectedLeague" (change)="fetchMatches()">
+      <select [(ngModel)]="selectedLeague" (change)="fetchMatches()" class="form-control">
         <option *ngFor="let league of leagueCodes" [value]="league.code">
           {{ league.name }}
         </option>
       </select>
-      <select [(ngModel)]="selectedSeason" (change)="fetchMatches()">
+      <select [(ngModel)]="selectedSeason" (change)="fetchMatches()" class="form-control">
         <option *ngFor="let year of seasonYear" [value]="year">
           {{ year }}
         </option>
       </select>
       <div class="button-input">
         <input
-        type="number"
-        [(ngModel)]="matchday"
-        [value]="1"  min="1"
-         max="38"
-        placeholder="1"/>
-
-        <button (click)="fetchMatches()">Fetch Matches</button>
-
+          type="number"
+          [(ngModel)]="matchday"
+          [value]="1"
+          min="1"
+          max="38"
+          placeholder="1"
+          class="form-control"
+        />
+        <button (click)="fetchMatches()" class="action-btn">Fetch Matches</button>
       </div>
     </div>
   </div>

@@ -1,10 +1,10 @@
-<div class="form-container">
+<div class="form-container classic-blue">
   <h2 class="form-header">Search Team Statistics</h2>
 
   <form (ngSubmit)="onSearch()" class="team-form">
     <div class="form-group">
       <label for="league">Select League:</label>
-      <select id="league" [(ngModel)]="selectedLeagueCode" (change)="onLeagueChange($event)" name="league" required>
+      <select id="league" [(ngModel)]="selectedLeagueCode" (change)="onLeagueChange($event)" name="league" class="form-control" required>
         <option *ngFor="let league of leagueCodes" [value]="league[0]">
           {{ league[1] }}
         </option>
@@ -13,7 +13,7 @@
 
     <div class="form-group">
       <label for="team">Select Team:</label>
-      <select id="team" [(ngModel)]="selectedTeamCode" name="team" required>
+      <select id="team" [(ngModel)]="selectedTeamCode" name="team" class="form-control" required>
         <option *ngFor="let team of teamCodes" [value]="team[0]">
           {{ team[1] }}
         </option>
@@ -22,12 +22,13 @@
 
     <div class="form-group">
       <label for="season">Season:</label>
-      <input id="season" type="number" [(ngModel)]="season" name="season" required />
+      <input id="season" type="number" [(ngModel)]="season" name="season" class="form-control" required />
     </div>
 
     <button type="submit" class="submit-btn">Search</button>
   </form>
 </div>
+
 
 
 <div *ngIf="teamStatistics; else loading">
@@ -41,7 +42,7 @@
       <button (click)="toggleInfo()">View More</button>
     </p>
     <div *ngIf="showFullInfo">
-      <p><strong>Form:</strong> {{ teamStatistics.form }}</p>
+      <p class ="teamForm"><strong>Form:</strong> {{ teamStatistics.form }}</p>
       <p><strong>Played (Total):</strong> {{ teamStatistics.totalPlayed }}</p>
       <p><strong>Wins:</strong> {{ teamStatistics.totalWins }}</p>
       <p><strong>Draws:</strong> {{ teamStatistics.totalDraws }}</p>
