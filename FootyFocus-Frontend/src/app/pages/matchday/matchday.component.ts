@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { catchError, Observable, of, tap } from 'rxjs';
 import { Match } from 'src/app/models/matches';
 import { MatchdayService } from 'src/app/services/matchday service/matchday.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-matchday',
@@ -44,20 +45,28 @@ export class MatchdayComponent implements OnInit {
           next: (data: Match[]) => {
             this.matches = data;
             this.error = null;
-            
-            // Log the refName of each match
-            this.matches.forEach(match => {
-              console.log('Referee Name:', match.refName);
-            });
           },
           error: (err) => {
+            // Show SweetAlert2 error message for API errors
+            Swal.fire({
+              title: 'Error Fetching Matches',
+              text: 'An error occurred while fetching matches. Please try again later.',
+              icon: 'error'
+            });
             this.error = 'An error occurred while fetching matches.';
             this.matches = [];
           }
         });
     } else {
+      // Show SweetAlert2 error message for invalid matchday
+      Swal.fire({
+        title: 'Invalid Matchday',
+        text: 'Please enter a matchday between 1 and 38.',
+        icon: 'warning'
+      });
       this.error = 'Please enter a matchday between 1 and 38.';
     }
   }
+  
   
 }

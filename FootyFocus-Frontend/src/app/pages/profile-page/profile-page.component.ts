@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Profile } from 'src/app/models/Profile';
 import { AuthService } from 'src/app/services/auth service/auth.service';
 import { ProfileService } from 'src/app/services/Profile service/profile.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile-page',
@@ -14,7 +15,9 @@ export class ProfilePageComponent implements OnInit{
   user: any = {};
   isEditing: boolean = false;
 
-  constructor(private authService: AuthService, private profileService: ProfileService) {}
+  constructor(private authService: AuthService,
+    private route: Router,
+     private profileService: ProfileService) {}
 
   ngOnInit(): void {
     this.loadUserProfile();
@@ -50,7 +53,16 @@ export class ProfilePageComponent implements OnInit{
 
   logout(): void {
     this.authService.logout();
-    // Redirect to login or home page
+    Swal.fire({
+      title: "Logged out successfully",
+      text: "Redirecting to login",
+      icon: "success",
+      timer: 2000,  // Optional: Auto-close the alert after 2 seconds
+      willClose: () => {
+        this.route.navigate(['/login']);  // Replace '/login' with your actual login route
+      }
+    });
+    
   }
 
   onFileSelected(event: any): void {

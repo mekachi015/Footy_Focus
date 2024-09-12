@@ -19,6 +19,12 @@
   padding: 20px;
 }
 
+.button-group{
+  display: flex;
+  justify-content: space-around;
+}
+
+
 .profile-pic {
   border-radius: 50%;
   width: 120px;
