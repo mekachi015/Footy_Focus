@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth service/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login-register',
@@ -72,27 +73,48 @@ export class LoginRegisterComponent implements OnInit {
             localStorage.setItem("token", token);
             this.userLoggedIn = true;
             this.error = null; // Clear any previous error message
-            this.successMessage = "Login successful."; // Set success message
-            setTimeout(() => {
-              this.successMessage = null; // Clear success message after 1 second
-              this.router.navigate(["/matchday"]); // Navigate to home upon successful login
-              this.authService.login(this.userEmail, token);
-            }, 1000); // 1 second delay before clearing success message and navigating
+            
+            // Show success alert
+            Swal.fire({
+              title: 'Login Successful',
+              text: 'You will be redirected to the Matchday.',
+              icon: 'success',
+              timer: 1500, // Optional: Auto-close after 1.5 seconds
+              willClose: () => {
+                // Navigate to home upon successful login
+                this.router.navigate(["/matchday"]);
+                this.authService.login(this.userEmail, token);
+              }
+            });
           } else {
             this.error = "User not found";
           }
         },
         (error: HttpErrorResponse) => {
+          // Show error alert based on HTTP error status
           if (error.status === 401) {
-            this.error = 'Incorrect password or User does not exist. Please try again.';
+            Swal.fire({
+              title: 'Login Failed',
+              text: 'Incorrect password or User does not exist. Please try again.',
+              icon: 'error'
+            });
           } else if (error.status === 404) {
-            this.error = 'User not found. Please check your email.';
+            Swal.fire({
+              title: 'User Not Found',
+              text: 'Please check your email.',
+              icon: 'error'
+            });
           } else {
-            this.error = 'Something went wrong. Please try again later.';
+            Swal.fire({
+              title: 'Error',
+              text: 'Something went wrong. Please try again later.',
+              icon: 'error'
+            });
           }
         }
       );
   }
+  
  
   onRegister(): void {
     this.http.post<{ token: string }>("http://localhost:8080/api/v1/auth/register", this.register.value)
@@ -113,29 +135,50 @@ export class LoginRegisterComponent implements OnInit {
                   this.userEmail = this.register.value.email;
                   localStorage.setItem("token", token);
                   this.userLoggedIn = true;
-                  this.error = null;
-                  this.successMessage = "Registration successful. You are now logged in."; 
-                  setTimeout(() => {
-                    this.successMessage = null;
-                    this.router.navigate(["/matchday"]);
-                    this.authService.login(this.userEmail, token);
-                  }, 1000); 
+                  
+                  // Show success alert for registration and auto-login
+                  Swal.fire({
+                    title: 'Registration Successful',
+                    text: 'You are now logged in and will be redirected to Matchday.',
+                    icon: 'success',
+                    timer: 1500, // Optional: Auto-close after 1.5 seconds
+                    willClose: () => {
+                      // Navigate to home upon successful login
+                      this.router.navigate(["/matchday"]);
+                      this.authService.login(this.userEmail, token);
+                    }
+                  });
                 }
               },
               (error: HttpErrorResponse) => {
-                this.error = 'Login failed after registration. Please try logging in manually.';
+                // Show error alert if login fails after registration
+                Swal.fire({
+                  title: 'Login Failed',
+                  text: 'Login failed after registration. Please try logging in manually.',
+                  icon: 'error'
+                });
               }
             );
         },
         (error: HttpErrorResponse) => {
+          // Show error alert based on registration error
           if (error.status === 400) {
-            this.error = 'Invalid registration details. Please check your input.';
+            Swal.fire({
+              title: 'Registration Error',
+              text: 'Invalid registration details. Please check your input.',
+              icon: 'error'
+            });
           } else {
-            this.error = 'Something went wrong. Please try again later.';
+            Swal.fire({
+              title: 'Error',
+              text: 'Something went wrong. Please try again later.',
+              icon: 'error'
+            });
           }
         }
       );
   }
+  
   
 
   // Function to switch between login and registration forms

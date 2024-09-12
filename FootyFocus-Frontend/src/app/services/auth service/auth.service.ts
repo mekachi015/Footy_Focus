@@ -83,11 +83,19 @@ import { RegisterRequest } from 'src/app/models/RegisterRequest';
       return this.userId;
     }
 
-    getUserProfile(): Observable<any> {
+    // getUserProfile(): Observable<any> {
+    //   const token = this.getToken();
+    //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    //   return this.http.get(`${this.baseUrl}/user`, { headers });
+    // }
+
+    getUserProfileByEmail(): Observable<any> {
+      const email = this.getLoggedInUserEmail();
       const token = this.getToken();
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-      return this.http.get(`${this.baseUrl}/user`, { headers });
+      return this.http.get(`${this.baseUrl}/user/email/${email}`, { headers });
     }
+    
 
     updateUserProfile(userData: any): Observable<any> {
       const token = this.getToken();
@@ -95,14 +103,29 @@ import { RegisterRequest } from 'src/app/models/RegisterRequest';
       return this.http.put(`${this.baseUrl}/user`, userData, { headers });
     }
   
+    // private extractUserIdFromToken(token: string): number | null {
+    //   try {
+    //     const payload = JSON.parse(atob(token.split('.')[1]));
+    //     return payload.id || null; // Assuming the user ID is stored in the "id" field
+    //     console.log("The user id is:", this.userId);
+    //   } catch (error) {
+    //     console.error('Error decoding token:', error);
+    //     return null;
+    //   }
+    // } 
+
     private extractUserIdFromToken(token: string): number | null {
       try {
-        const payload = JSON.parse(atob(token.split('.')[1]));
+        const payload = JSON.parse(atob(token.split('.')[1])); // Decode the token's payload
+        console.log("Decoded payload:", payload); // To see the full payload
         return payload.id || null; // Assuming the user ID is stored in the "id" field
       } catch (error) {
-        // console.error('Error decoding token:', error);
+        console.error('Error decoding token:', error);
         return null;
       }
-    } 
+    }
+    
+
+    
   
 }

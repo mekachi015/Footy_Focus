@@ -1,4 +1,5 @@
-<div class="profile-container">
+<!-- Classic Blue Theme -->
+<div class="profile-container classic-blue">
   <h2>User Profile</h2>
 
   <div *ngIf="!isEditing" class="profile-info">
@@ -8,7 +9,7 @@
     <p><strong>Email:</strong> {{ user.email }}</p>
     <p><strong>Bio:</strong> {{ user.bio || 'No bio available' }}</p>
     <button (click)="toggleEdit()" class="edit-btn">Edit Profile</button>
-    <button  class="edit-btn" (click)="logout()">Logout</button>
+    <button class="edit-btn" (click)="logout()">Logout</button>
   </div>
 
   <form *ngIf="isEditing" class="edit-form" (ngSubmit)="saveProfile()">

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Profile } from 'src/app/models/Profile';
 import { AuthService } from 'src/app/services/auth service/auth.service';
 import { ProfileService } from 'src/app/services/Profile service/profile.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile-page',
@@ -11,64 +12,60 @@ import { ProfileService } from 'src/app/services/Profile service/profile.service
 })
 export class ProfilePageComponent implements OnInit{
 
-  user: any = {};  // Initialize user object
-  isEditing = false;
-  userProfile: Profile | undefined;
-  userId: number | null = null; // Initialize userId as number or null
+  user: any = {};
+  isEditing: boolean = false;
+
   constructor(private authService: AuthService,
-    private profile: ProfileService,
-    private router: Router
-  ) {}
+    private route: Router,
+     private profileService: ProfileService) {}
 
   ngOnInit(): void {
-
-    this.userId = this.authService.getUserId();
-
-    this.loadUserProfile()
+    this.loadUserProfile();
   }
 
-  loadUserProfile() {
-    if (this.userId !== null) {
-      this.profile.getUserProfile(this.userId).subscribe(
-        (profile: Profile) => {
-          this.userProfile = profile;
-        },
-        (error) => {
-          console.error('Error fetching user profile:', error);
-        }
-      );
-    }
-  }
-
-  logout(): void {
-    this.authService.logout();
-    window.alert("Logout succesful");
-    this.router.navigate(["/login"]);
+  loadUserProfile(): void {
+    this.authService.getUserProfileByEmail().subscribe(
+      (data) => {
+        this.user = data;
+      },
+      (error) => {
+        console.error('Error fetching user profile', error);
+      }
+    );
   }
 
   toggleEdit(): void {
     this.isEditing = !this.isEditing;
   }
 
-  onFileSelected(event: any): void {
-    const file = event.target.files[0];
-    // Handle file upload logic here
-    // You may want to add this logic to upload the file and update the user's profile picture
+  saveProfile(): void {
+    // // Implement save functionality
+    // this.profileService.updateUserProfile(this.user).subscribe(
+    //   (response) => {
+    //     console.log('Profile updated successfully');
+    //     this.toggleEdit();
+    //   },
+    //   (error) => {
+    //     console.error('Error updating profile', error);
+    //   }
+    // );
   }
 
-  saveProfile(): void {
-    // Remove email from the profile data to avoid changes to the email field
-    const updatedUser = { ...this.user };
-    delete updatedUser.email;
-
-    this.authService.updateUserProfile(updatedUser).subscribe({
-      next: (response) => {
-        console.log('Profile updated successfully', response);
-        this.isEditing = false;
-        this.loadUserProfile();  // Reload user info after successful update
-      },
-      error: (err) => {
-        console.error('Error updating profile', err);
+  logout(): void {
+    this.authService.logout();
+    Swal.fire({
+      title: "Logged out successfully",
+      text: "Redirecting to login",
+      icon: "success",
+      timer: 2000,  // Optional: Auto-close the alert after 2 seconds
+      willClose: () => {
+        this.route.navigate(['/login']);  // Replace '/login' with your actual login route
       }
     });
-  }}
+    
+  }
+
+  onFileSelected(event: any): void {
+    // Handle file upload
+  }
+}

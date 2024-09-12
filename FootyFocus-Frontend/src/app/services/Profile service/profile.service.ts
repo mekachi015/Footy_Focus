@@ -18,4 +18,8 @@ export class ProfileService {
     return this.http.get<Profile>(url);
   }
 
+  getUserProfileByEmail(email: string): Observable<Profile> {
+    const url = `${this.baseUrl}/user/email/${email}`; // Corrected URL
+    return this.http.get<Profile>(url); 
+  }
 }

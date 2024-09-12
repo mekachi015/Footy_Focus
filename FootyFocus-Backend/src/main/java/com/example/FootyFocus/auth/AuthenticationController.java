@@ -1,11 +1,14 @@
 package com.example.FootyFocus.auth;
 
+import com.example.FootyFocus.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 
 @RestController
@@ -15,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 public class AuthenticationController {
 
     private final AuthenticationService service;
+
+    private final UserRepo userRepo;
 
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(
@@ -36,4 +41,29 @@ public class AuthenticationController {
         User user = (User) authentication.getPrincipal();
         return ResponseEntity.ok(user);
     }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<com.example.FootyFocus.user.User> getUserById(
+            @PathVariable Long userId) {
+        Optional<com.example.FootyFocus.user.User> userOptional = userRepo.findById(userId);
+        if (userOptional.isPresent()) {
+            return ResponseEntity.ok(userOptional.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/user/email/{email}")
+    public ResponseEntity<com.example.FootyFocus.user.User> getUserByEmail(
+            @PathVariable String email) {
+        Optional<com.example.FootyFocus.user.User> email1 = userRepo.findByEmail(email);
+        if (email1.isPresent()) {
+            return ResponseEntity.ok(email1.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
+
 }
