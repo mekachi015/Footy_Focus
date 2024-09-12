@@ -45,7 +45,9 @@ public class SecurityConfiguration {
                                 "v4/competitions/PL/matches?matchday={matchday}",
                                 "/api/players/search",
                                 "/players/**",
-                                "/teams/statistics/**")
+                                "/teams/statistics/**",
+                                "/user/email/**",
+                                "/user/update/**")
                         .permitAll()
                         .anyRequest()
                         .authenticated()

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { first } from 'rxjs';
 import { Profile } from 'src/app/models/Profile';
 import { AuthService } from 'src/app/services/auth service/auth.service';
 import { ProfileService } from 'src/app/services/Profile service/profile.service';
@@ -39,16 +40,36 @@ export class ProfilePageComponent implements OnInit{
   }
 
   saveProfile(): void {
-    // // Implement save functionality
-    // this.profileService.updateUserProfile(this.user).subscribe(
-    //   (response) => {
-    //     console.log('Profile updated successfully');
-    //     this.toggleEdit();
-    //   },
-    //   (error) => {
-    //     console.error('Error updating profile', error);
-    //   }
-    // );
+    // Map user object fields to the expected structure
+    const updateProfileData: Profile = {
+      firstname: this.user.firstname,
+      lastname: this.user.lastname,
+      email: this.user.email,  // Ensure the email is included in the request
+      favTeam: this.user.favTeam,
+      bio: this.user.bio
+    };
+
+    // Send the request to update the profile
+    this.profileService.updateUserProfile(this.user.email, updateProfileData).subscribe(
+      (response) => {
+        Swal.fire({
+          title: "Profile Updated",
+          text: "Your profile has been updated successfully",
+          icon: "success",
+          timer: 2000
+        });
+        this.toggleEdit();  // Exit edit mode after saving
+        console.log(response);
+      },
+      (error) => {
+        Swal.fire({
+          title: "Error",
+          text: "An error occurred while updating your profile",
+          icon: "error",
+        });
+        console.error('Error updating profile', error);
+      }
+    );
   }
 
   logout(): void {

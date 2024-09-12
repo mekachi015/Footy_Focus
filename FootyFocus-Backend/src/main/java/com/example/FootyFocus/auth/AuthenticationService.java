@@ -49,8 +49,6 @@ public class AuthenticationService {
                 .build();
     }
 
-//    public User getUserById(Integer userId) {
-//        return repository.findByUserId(userId)
-//                .orElseThrow(() -> new RuntimeException("User not found with ID: " + userId));
-//    }
+
+
 }

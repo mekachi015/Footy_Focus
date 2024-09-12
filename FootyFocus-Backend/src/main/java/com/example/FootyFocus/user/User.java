@@ -29,6 +29,10 @@ public class User  implements UserDetails {
     private String email;
     private String password;
 
+    //sections for the bio and the favorite team
+    private String biography;
+    private String favTeam;
+
     @Enumerated(EnumType.STRING)
     private Role role;
 
