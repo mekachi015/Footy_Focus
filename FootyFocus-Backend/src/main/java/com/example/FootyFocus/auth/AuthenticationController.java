@@ -2,12 +2,15 @@ package com.example.FootyFocus.auth;
 
 import com.example.FootyFocus.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 
@@ -63,6 +66,69 @@ public class AuthenticationController {
             return ResponseEntity.notFound().build();
         }
     }
+
+//    @PutMapping("/user/update/{email}")
+//    public ResponseEntity<?> updateUser(
+//            @PathVariable String email,
+//            @RequestBody UpdateUserRequest updateUserRequest) {
+//
+//        // Fetch user by email
+//        Optional<com.example.FootyFocus.user.User> userOptional = userRepo.findByEmail(email);
+//
+//        // Check if the user exists
+//        if (userOptional.isPresent()) {
+//            com.example.FootyFocus.user.User user = userOptional.get();
+//
+//            // Update user details
+//            user.setFirstname(updateUserRequest.getFirstName());
+//            user.setLastname(updateUserRequest.getLastName());
+//            user.setFavTeam(updateUserRequest.getFavTeam());
+//            user.setBiography(updateUserRequest.getBiography());
+//
+//            // Save updated user to the repository
+//            userRepo.save(user);
+//
+//            // Return success response
+//            return ResponseEntity.ok("User updated successfully");
+//        } else {
+//            // If user not found, return 404 response
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+//        }
+//    }
+
+    @PutMapping("/user/update/{email}")
+    public ResponseEntity<?> updateUser(
+            @PathVariable String email,
+            @RequestBody UpdateUserRequest updateUserRequest) {
+
+        // Fetch user by email
+        Optional<com.example.FootyFocus.user.User> userOptional = userRepo.findByEmail(email);
+
+        // Check if the user exists
+        if (userOptional.isPresent()) {
+            com.example.FootyFocus.user.User user = userOptional.get();
+
+            // Update user details
+            user.setFirstname(updateUserRequest.getFirstName());
+            user.setLastname(updateUserRequest.getLastName());
+            user.setFavTeam(updateUserRequest.getFavTeam());
+            user.setBiography(updateUserRequest.getBiography());
+
+            // Save updated user to the repository
+            userRepo.save(user);
+
+            // Return success response as a JSON object
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "User updated successfully");
+            return ResponseEntity.ok(response);
+        } else {
+            // If user not found, return 404 response
+            Map<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("message", "User not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+        }
+    }
+
 
 
 
