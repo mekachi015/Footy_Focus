@@ -47,7 +47,6 @@ export class MatchdayComponent implements OnInit {
             this.error = null;
           },
           error: (err) => {
-            // Show SweetAlert2 error message for API errors
             Swal.fire({
               title: 'Error Fetching Matches',
               text: 'An error occurred while fetching matches. Please try again later.',
@@ -58,14 +57,18 @@ export class MatchdayComponent implements OnInit {
           }
         });
     } else {
-      // Show SweetAlert2 error message for invalid matchday
       Swal.fire({
         title: 'Invalid Matchday',
         text: 'Please enter a matchday between 1 and 38.',
         icon: 'warning'
       });
       this.error = 'Please enter a matchday between 1 and 38.';
+      this.matches = [];
     }
+  }
+
+  onInputChange() {
+    this.error = null;
   }
   
   

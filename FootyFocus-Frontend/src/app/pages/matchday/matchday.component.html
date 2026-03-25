@@ -10,12 +10,12 @@
     <div class="divider"></div>
     
     <div class="filters">
-      <select [(ngModel)]="selectedLeague" (change)="fetchMatches()">
+      <select [(ngModel)]="selectedLeague" (change)="onInputChange()">
         <option *ngFor="let league of leagueCodes" [value]="league.code">
           {{ league.name }}
         </option>
       </select>
-      <select [(ngModel)]="selectedSeason" (change)="fetchMatches()">
+      <select [(ngModel)]="selectedSeason" (change)="onInputChange()">
         <option *ngFor="let year of seasonYear" [value]="year">
           {{ year }}
         </option>
@@ -26,7 +26,8 @@
         [(ngModel)]="matchday"
         [value]="1"  min="1"
          max="38"
-        placeholder="1"/>
+        placeholder="1"
+        (input)="onInputChange()"/>
 
         <button (click)="fetchMatches()">Fetch Matches</button>
 
@@ -36,7 +37,7 @@
   
   
 
-  <div *ngIf="error" class="error">{{ error }}</div>
+
 
   <!-- Competition Emblem and Name Display -->
   <div class="select-section">
@@ -46,6 +47,8 @@
     <button>Upcoming Games</button>
   </div>
 
+
+  <div *ngIf="error" class="error">{{ error }}</div>
 
   <div class="matches" *ngFor="let match of matches">
 
