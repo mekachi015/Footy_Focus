@@ -25,7 +25,7 @@ export class LeagueStandingComponent implements OnInit {
     { code: 'DED', name: 'Eredivisie' }
   ];
   
-  seasonYear: number[] = [2020, 2021, 2022, 2023];
+  seasonYear: number[] = [2023, 2024];
   selectedSeasonYear: number = 2023; // Default to the current year
   selectedLeagueCode: string = 'PL';  // Default to Premier League
 
@@ -34,17 +34,7 @@ export class LeagueStandingComponent implements OnInit {
   }
 
   fetchStandings(): void {
-    // Check if the selected season year is within the allowed range
-    if (this.selectedSeasonYear < 2020 || this.selectedSeasonYear > 2024) {
-      Swal.fire({
-        title: 'Invalid Year',
-        text: 'Please enter a year between 2020 and 2024.',
-        icon: 'error'
-      });
-      return; // Exit the method to prevent further execution
-    }
-  
-    // Proceed with the API call if the year is valid
+    // No need to check for invalid year, dropdown restricts to valid years
     this.leagueService.getLeagueStanding(this.selectedLeagueCode, this.selectedSeasonYear).subscribe(
       (data: LeagueStandings[]) => {
         this.leagueStandings = data;

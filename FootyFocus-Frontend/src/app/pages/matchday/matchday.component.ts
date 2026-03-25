@@ -20,7 +20,7 @@ export class MatchdayComponent implements OnInit {
     { code: 'DED', name: 'Eredivisie' }
   ];
   
-  seasonYear: number[] = [2020, 2021, 2023, 2024];
+  seasonYear: number[] = [2023, 2024];
 
 
   constructor(private matchdayService: MatchdayService) { }

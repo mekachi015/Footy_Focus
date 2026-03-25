@@ -19,7 +19,12 @@
     justify-content: space-between;
 
     button{
-      width: 12rem;
+     padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
     }
   }
 }
@@ -28,7 +33,7 @@
   position: relative;
   width: 230px;
 
-  left: 10rem;
+  left: 7rem;
   bottom: 2.7rem;
 
 }

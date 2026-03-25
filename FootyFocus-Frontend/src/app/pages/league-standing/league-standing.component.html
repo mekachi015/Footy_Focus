@@ -16,8 +16,11 @@
     </div>
 
     <div>
-      <label for="seasonYear">Enter Season Year:</label>
-      <input id="seasonYear" type="number" [(ngModel)]="selectedSeasonYear">
+      <label for="seasonYear">Select Season Year:</label>
+      <select id="seasonYear" [(ngModel)]="selectedSeasonYear">
+        <option [ngValue]="2023">2023</option>
+        <option [ngValue]="2024">2024</option>
+      </select>
     </div>
 
     <button (click)="fetchStandings()">Fetch Standings</button>
