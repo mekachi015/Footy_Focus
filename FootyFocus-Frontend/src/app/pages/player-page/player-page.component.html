@@ -22,7 +22,10 @@
 
     <div class="form-group">
       <label for="season">Season:</label>
-      <input id="season" type="number" [(ngModel)]="season" name="season" required />
+        <select id="season" [(ngModel)]="season" name="season" required>
+          <option [ngValue]="2023">2023</option>
+          <option [ngValue]="2024">2024</option>
+        </select>
     </div>
 
     <button type="submit" class="submit-btn">Search</button>

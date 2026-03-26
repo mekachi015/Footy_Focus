@@ -58,8 +58,10 @@ button:hover {
 .form-group {
   margin-bottom: 15px;
 
-  #season{
-    width: 375px;
+  #season {
+    width: 100%;
+    max-width: 350px;
+    box-sizing: border-box;
   }
 }
 
