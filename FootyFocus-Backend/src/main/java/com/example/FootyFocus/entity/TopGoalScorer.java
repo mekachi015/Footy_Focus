@@ -18,7 +18,7 @@ import lombok.Setter;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
 
     //for the competition

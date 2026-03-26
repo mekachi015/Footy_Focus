@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
+import { Player } from 'src/app/models/Player';
+import { Router } from '@angular/router';
+import { PlayerServiceService } from 'src/app/services/player service/player-service.service';
+=======
 import { TeamStatistics } from 'src/app/models/TeamStats';
 import { TeamStatisticsService } from 'src/app/services/team statistic service/team-stats.service';
+>>>>>>> 3830bf3f8c969c36802466de2a2fe0e3c9a89db1
 
 @Component({
   selector: 'app-player-page',
@@ -19,6 +25,39 @@ export class PlayerPageComponent implements OnInit {
   public error: string | null = null;
   public showFullInfo: boolean = false; 
 
+<<<<<<< HEAD
+  constructor (private playerService: PlayerServiceService, private router: Router){}
+
+  //idPlayer: number;
+  
+  leagueCodes: { code: string, name: string }[] = [
+    { code: 'PL', name: 'Premier League' },
+    { code: 'BL1', name: 'Bundesliga' },
+    { code: 'SA', name: 'Serie A' },
+    { code: 'FL1', name: 'Ligue 1' },
+    { code: 'PD', name: 'La Liga' },
+    { code: 'DED', name: 'Eredivisie' }
+  ];
+  
+  seasonYear: number[] = [2020, 2021, 2022, 2023];
+
+  // selectedSeasonYear: number = new Date().getFullYear(); //default to the current year
+  selectedSeasonYear: number = 2023; //default to the current year
+  selectedLeagueCode: string = 'PL';  // setting default to premier league
+
+  ngOnInit(): void {
+     this.fetchTopPlayers();
+     
+  }
+
+  fetchTopPlayers(): void{
+    this.playerService.getTopTenPlayers(this.selectedLeagueCode, this.selectedSeasonYear)
+    .subscribe((data: Player[]) =>{
+      this.players = data;
+
+      console.log(this.players);
+    },
+=======
   constructor(private teamStatsService: TeamStatisticsService) { }
 
   ngOnInit(): void {
@@ -37,6 +76,7 @@ export class PlayerPageComponent implements OnInit {
           next: (data: TeamStatistics) => {
             this.teamStatistics = data;
             this.error = null; // Clear any previous error
+>>>>>>> 3830bf3f8c969c36802466de2a2fe0e3c9a89db1
 
             console.log(this.teamStatistics);
           },
@@ -51,9 +91,20 @@ export class PlayerPageComponent implements OnInit {
     }
   }
 
+<<<<<<< HEAD
+  goToPlayerDetail(id: number): void {
+    this.router.navigate(['/players', id]);
+  }
+  // getPlayerById(): void{
+  //   this.playerService.getPlayerById(this.idPlayer).subscribe(
+  //     (data: Player[]) => {
+  //       this.players = data;
+  //     },
+=======
   onLeagueChange(event: Event): void {
     const target = event.target as HTMLSelectElement;
     this.selectedLeagueCode = Number(target.value);
+>>>>>>> 3830bf3f8c969c36802466de2a2fe0e3c9a89db1
 
     // Update teamCodes based on selected league
     switch (this.selectedLeagueCode) {

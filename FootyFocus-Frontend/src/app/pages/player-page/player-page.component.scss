@@ -1,4 +1,31 @@
+<<<<<<< HEAD
+/* top-players.component.css */
+.card-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.input-container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+=======
 .team-info {
+>>>>>>> 3830bf3f8c969c36802466de2a2fe0e3c9a89db1
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -55,6 +82,31 @@ button:hover {
   flex-direction: column;
 }
 
+<<<<<<< HEAD
+select, input {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+button {
+  width: 9rem;
+  height: 3rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+=======
 .form-group {
   margin-bottom: 15px;
 
@@ -96,3 +148,4 @@ button.submit-btn:hover {
   background-color: #0056b3;
 }
 
+>>>>>>> 3830bf3f8c969c36802466de2a2fe0e3c9a89db1

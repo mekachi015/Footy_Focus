@@ -1,0 +1,14 @@
+<div *ngIf="player">
+
+    <h2>{{ player.playerName }}</h2>
+    <p>Date of Birth: {{ player.dateOfBirth }}</p>
+    <p>Nationality: {{ player.nationality }}</p>
+    <p>Section: {{ player.section }}</p>
+    <p>Shirt Number: {{ player.shirtNumber }}</p>
+
+    <p>Team Name: {{player.teamName}}</p>
+    <p> Team Venue: {{player.teamVenue}}</p>
+    <img [src]="player.teamCrest" [alt]= "player.teamName">
+
+    <button> Add to favorite</button>
+</div>

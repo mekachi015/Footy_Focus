@@ -50,12 +50,15 @@ public class TopScorerApiSerive {
             Map<String, Object> player = (Map<String, Object>) scorerData.get("player");
             Map<String, Object> team = (Map<String, Object>) scorerData.get("team");
 
+            //This section handles getting competition information
             topScorer.setCompName((String) competition.get("name"));
             topScorer.setCompEmblem((String) competition.get("emblem"));
             topScorer.setSeasonStartDate((String) season.get("startDate"));
             topScorer.setSeasonEndDate((String) season.get("endDate"));
             topScorer.setCurrentMatchday((int) season.get("currentMatchday"));
 
+            //This section gets player
+            topScorer.setId((int) player.get("id"));
             topScorer.setPlayerName((String) player.get("name"));
             topScorer.setNationality((String) player.get("nationality"));
             topScorer.setSection((String) player.get("section"));

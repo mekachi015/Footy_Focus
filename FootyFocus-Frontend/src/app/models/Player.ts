@@ -1,6 +1,6 @@
 export interface Player{ // an interface that keeps track of the 10 scorers of a league
 
-    id: number | null;
+    id: number;
     compName: string;
     compCode: string | null;
     compEmblem: string;
