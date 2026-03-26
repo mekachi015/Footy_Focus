@@ -1,60 +1,181 @@
+.container {
+  width: 80%;
+  margin: 0 auto;
+  max-width: 1200px; /* Added max-width for larger screens */
+  padding: 10px;
+}
+
+.emblem-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.competition-emblem-container {
+  display: flex;
+  justify-content: center;
+}
+
+.competition-emblem {
+  max-width: 100px;
+  height: auto;
+}
+
+.input-field-container {
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.input-field-container div {
+  flex: 1 1 200px;
+}
+
+.input-field-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-field-container select,
+.input-field-container input {
+  margin-bottom: 10px;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.standings-header,
 .competition {
-    display: flex;
-    flex-direction: column; /* Stack items vertically */
-    margin: 10px 0; /* Space between teams */
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.standings-header {
+  font-weight: bold;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
 }
 
 .team-info {
-    display: flex;
-    align-items: center; /* Center vertically */
-    justify-content: space-between; /* Space items evenly */
-    border: 1px solid #ccc; /* Add border */
-    padding: 10px; /* Space inside */
-    border-radius: 5px; /* Rounded corners */
-    background-color: #f9f9f9; /* Background color */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
 }
 
-.teamCrest {
-    width: 60px; /* Set crest width */
-    height: 20pxx; /* Set crest height */
-    margin-right: 10px; /* Space between image and text */
+.team-info img {
+  max-width: 50px;
+  height: auto;
+  margin-right: 10px;
 }
 
-.span {
-    flex: 1; /* Make spans take equal space */
-    text-align: center; /* Center align text */
+.team-info span {
+  flex: 1;
+  text-align: center;
+  font-size: 14px;
 }
 
-label {
-    font-weight: bold;
-    margin-right: 1rem;
-  }
+/* Mobile responsiveness */
+@media (min-width: 430px) {
+    .container {
+      width: 90%;
+      padding: 5px;
+      margin-bottom: 5rem;
+    }
   
-  .input-field-container{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-  }
-  select, input {
-    padding: 0.5rem;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-    margin-bottom: 1rem;
-  }
+    .competition-emblem {
+      max-width: 80px;
+    }
   
-  button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
+    .input-field-container {
+      gap: 10px;
+    }
   
-  button:hover {
-    background-color: #0056b3;
-  }
+    .input-field-container div {
+      flex: 1 1 100%;
+    }
   
+    .input-field-container select,
+    .input-field-container input {
+      padding: 6px;
+    }
+  
+    button {
+      padding: 8px 16px;
+      font-size: 14px;
+      width: 100%;
+    }
+  
+    .standings-header {
+      font-size: 16px;
+    }
+  
+    .team-info {
+      padding: 3px 0;
+    }
+  
+    .team-info img {
+      max-width: 40px;
+    }
+  
+    .team-info span {
+      font-size: 11px;
+      display: inline-block;
+    }
+
+    .team-shortname{
+      display: inline-block;   /* Allows width to be determined by content */
+       white-space: nowrap;     /* Prevent text from wrapping */
+        overflow: hidden;  
+    }
+
+    span .team-position{
+      width: 30px; /* Fixed width for team position */
+      text-align: center;
+    }
+
+    .team-photo-container {
+      display: inline-block;
+      cursor: pointer;
+    }
+    
+    .teamCrest {
+      max-width: 50px;
+      height: auto;
+    }
+    .team-form svg {
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+    
+    .team-form {
+      margin-top: 10px;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 14px;
+      text-align: center;
+    }
+    
+}
+
+    
+    
+

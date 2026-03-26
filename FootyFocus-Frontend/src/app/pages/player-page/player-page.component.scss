@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* top-players.component.css */
 .card-container {
   padding: 20px;
@@ -22,32 +23,66 @@
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+=======
+.team-info {
+>>>>>>> 3830bf3f8c969c36802466de2a2fe0e3c9a89db1
   padding: 15px;
-  text-align: center;
-  transition: transform 0.2s;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 15px;
+  background-color: #f9f9f9;
+  z-index: 1;
+  margin-bottom: 5rem;
 }
 
-.card:hover {
-  transform: scale(1.05);
-}
-
-.team-crest {
+.team-logo {
   width: 50px;
-  height: 50px;
+  height: auto;
+  display: block;
   margin-bottom: 10px;
 }
 
-h2 {
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.viewMore{
+  position: relative;
+  left: 2rem;
+}
+
+.form-container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.form-header {
   text-align: center;
+  font-size: 24px;
+  color: #333;
   margin-bottom: 20px;
 }
 
-.team-name {
-  font-weight: bold;
-  margin: 5px 0;
-  color: #333;
+.team-form {
+  display: flex;
+  flex-direction: column;
 }
 
+<<<<<<< HEAD
 select, input {
   padding: 0.5rem;
   border-radius: 4px;
@@ -71,3 +106,46 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+=======
+.form-group {
+  margin-bottom: 15px;
+
+  #season {
+    width: 100%;
+    max-width: 350px;
+    box-sizing: border-box;
+  }
+}
+
+label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+select, input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+button.submit-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  align-self: center;
+}
+
+button.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+>>>>>>> 3830bf3f8c969c36802466de2a2fe0e3c9a89db1

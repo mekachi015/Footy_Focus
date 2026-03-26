@@ -1,20 +1,17 @@
-<!-- top-players.component.html -->
-<!-- <div *ngIf="players.length > 0">
-  <h2>Top Players</h2>
-  <ul>
-    <li *ngFor="let player of players">
-      <h3>{{ player.playerName }} ({{ player.teamName }})</h3>
-      <img [src]="player.teamCrest" alt="{{ player.teamName }} Crest" width="50" />
-      <p>Goals Scored: {{ player.goalsScored }}</p>
-      <p>Assists: {{ player.noOfAssits }}</p>
-    </li>
-  </ul>
-</div>
-<div *ngIf="players.length === 0">
-  <p>No players found.</p>
-</div> -->
+<div class="form-container">
+  <h2 class="form-header">Search Team Statistics</h2>
 
+  <form (ngSubmit)="onSearch()" class="team-form">
+    <div class="form-group">
+      <label for="league">Select League:</label>
+      <select id="league" [(ngModel)]="selectedLeagueCode" (change)="onLeagueChange($event)" name="league" required>
+        <option *ngFor="let league of leagueCodes" [value]="league[0]">
+          {{ league[1] }}
+        </option>
+      </select>
+    </div>
 
+<<<<<<< HEAD
 <!-- top-players.component.html
 <div class="card-container">
     <div class="input-container">
@@ -24,17 +21,30 @@
             <option *ngFor="let item of leagueCodes " [value]="item.code">
                 {{item.name}}
             </option>
+=======
+    <div class="form-group">
+      <label for="team">Select Team:</label>
+      <select id="team" [(ngModel)]="selectedTeamCode" name="team" required>
+        <option *ngFor="let team of teamCodes" [value]="team[0]">
+          {{ team[1] }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="season">Season:</label>
+        <select id="season" [(ngModel)]="season" name="season" required>
+          <option [ngValue]="2023">2023</option>
+          <option [ngValue]="2024">2024</option>
+>>>>>>> 3830bf3f8c969c36802466de2a2fe0e3c9a89db1
         </select>
     </div>
-  
-    <div>
-        <label for="seasonYear">Enter Season Year:</label>
-        <input id="seasonYear" type="number" [(ngModel)]="selectedSeasonYear">
-        </div>
 
-        <button (click)="fetchTopPlayers()">Fetch Top 10</button>
-    </div>
+    <button type="submit" class="submit-btn">Search</button>
+  </form>
+</div>
 
+<<<<<<< HEAD
   <div *ngIf="players.length > 0">
     <h2>Top Players For: {{selectedSeasonYear}}</h2>
     <div class="card-grid">
@@ -91,3 +101,51 @@
     </div>
   </div>
   
+=======
+
+<div *ngIf="teamStatistics; else loading">
+  <div class="team-info">
+    <h3>{{ teamStatistics.teamName }}</h3>
+    <img [src]="teamStatistics.teamLogo" alt="{{ teamStatistics.teamName }} Logo" class="team-logo" />
+    <p><strong>League:</strong> {{ teamStatistics.leagueName }}</p>
+    <p><strong>Season:</strong> {{ teamStatistics.season }}</p>
+    <p *ngIf="!showFullInfo">
+      <strong>Form:</strong> {{ teamStatistics.form | slice:0:10 }}...
+      <button (click)="toggleInfo()">View More</button>
+    </p>
+    <div *ngIf="showFullInfo">
+      <p><strong>Form:</strong> {{ teamStatistics.form }}</p>
+      <p><strong>Played (Total):</strong> {{ teamStatistics.totalPlayed }}</p>
+      <p><strong>Wins:</strong> {{ teamStatistics.totalWins }}</p>
+      <p><strong>Draws:</strong> {{ teamStatistics.totalDraws }}</p>
+      <p><strong>Losses:</strong> {{ teamStatistics.totalLoses }}</p>
+      <p><strong>Goals For (Total):</strong> {{ teamStatistics.goalsForTotal }}</p>
+      <p><strong>Goals Against (Total):</strong> {{ teamStatistics.goalsAgainstTotal }}</p>
+      <p><strong>Clean Sheets (Total):</strong> {{ teamStatistics.cleanSheetTotal }}</p>
+      <p><strong>Failed to Score (Total):</strong> {{ teamStatistics.failedToScoreTotal }}</p>
+      <p><strong>Yellow Cards:</strong> {{ teamStatistics.yellowCards }}</p>
+      <p><strong>Red Cards:</strong> {{ teamStatistics.redCards }}</p>
+      <p><strong>Biggest Win Streak:</strong> {{ teamStatistics.biggestWinStreak }}</p>
+      <p><strong>Biggest Draw Streak:</strong> {{ teamStatistics.biggestDrawStreak }}</p>
+      <p><strong>Biggest Lose Streak:</strong> {{ teamStatistics.biggestLoseStreak }}</p>
+      <p><strong>Biggest Home Win:</strong> {{ teamStatistics.biggestHomeWin }}</p>
+      <p><strong>Biggest Away Win:</strong> {{ teamStatistics.biggestAwayWin }}</p>
+      <p><strong>Biggest Home Lose:</strong> {{ teamStatistics.biggestHomeLose }}</p>
+      <p><strong>Biggest Away Lose:</strong> {{ teamStatistics.biggestAwayLose }}</p>
+      <p><strong>Biggest Goals For Home:</strong> {{ teamStatistics.biggestGoalsForHome }}</p>
+      <p><strong>Biggest Goals For Away:</strong> {{ teamStatistics.biggestGoalsForAway }}</p>
+      <p><strong>Biggest Goals Against Home:</strong> {{ teamStatistics.biggestGoalsAgainstHome }}</p>
+      <p><strong>Biggest Goals Against Away:</strong> {{ teamStatistics.biggestGoalsAgainstAway }}</p>
+      <button (click)="toggleInfo()" class="view-More">View Less</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>
+
+<ng-template #error>
+  <p>{{ error }}</p>
+</ng-template>
+>>>>>>> 3830bf3f8c969c36802466de2a2fe0e3c9a89db1

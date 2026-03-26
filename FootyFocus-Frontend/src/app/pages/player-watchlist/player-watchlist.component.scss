@@ -1,0 +1,198 @@
+/* player-profile.css */
+
+.player-search-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.player-search-container h2 {
+  color: #333;
+  border-bottom: 2px solid #0066cc;
+  padding-bottom: 10px;
+}
+
+.player-results {
+  margin-top: 30px;
+}
+
+.player-profiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.player-profile {
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 400px;
+  transition: transform 0.3s ease;
+}
+
+.player-profile:hover {
+  transform: translateY(-5px);
+}
+
+.profile-header {
+  background-color: #0066cc;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.profile-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  margin-bottom: 10px;
+}
+
+.profile-header h4 {
+  margin: 10px 0;
+  font-size: 24px;
+}
+
+.player-meta {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.profile-body {
+  padding: 20px;
+}
+
+.team-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.team-logo {
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+}
+
+.player-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.detail-group {
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.detail-group h5 {
+  color: #0066cc;
+  margin-top: 0;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+.detail-group p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.favorite-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.favorite-button svg {
+  cursor: pointer;
+  transition: fill 0.3s ease;
+}
+
+.favorite-button svg:hover {
+  fill: red;
+}
+
+.no-results {
+  text-align: center;
+  color: #666;
+  margin-top: 30px;
+}
+
+/* Styles for the search form (keeping it simple) */
+form {
+  margin-bottom: 20px;
+}
+
+form div {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+select, input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+button[type="submit"] {
+  background-color: #0066cc;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0052a3;
+}
+
+.view-more-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.view-more-btn:hover {
+  background-color: #0052a3;
+}
+
+.additional-details {
+  margin-top: 20px;
+}
+
+.player-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.detail-group {
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
